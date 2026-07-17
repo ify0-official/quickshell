@@ -1,0 +1,11 @@
+{
+    "theme": "dark",
+    "animationSpeed": "normal",
+    "notifications": {
+        "enabled": true,
+        "maxVisible": 5
+    },
+    "workspaces": {
+        "count": 4
+    }
+}
