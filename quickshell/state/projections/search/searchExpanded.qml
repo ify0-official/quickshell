@@ -5,24 +5,16 @@ Item {
     id: root
     objectName: "searchExpanded"
 
-    // === 1. METADATA ===
     implicitWidth: 400
     implicitHeight: 300
 
-    // === 2. SIGNALS ===
     signal querySubmitted(string query)
     signal resultSelected(var result)
 
-    // === 3. PROPERTIES ===
     property string query: ""
     property list<var> results: []
     property string placeholderText: "Search..."
 
-    // === 4. ENUMS ===
-
-    // === 5. ATTACHED OBJECTS & BEHAVIORS ===
-
-    // === 6. CHILD OBJECTS (visual hierarchy) ===
     Rectangle {
         anchors.fill: parent
         color: "#222222"
@@ -103,13 +95,8 @@ Item {
         }
     }
 
-    // === 7. STATES & TRANSITIONS ===
-
-    // === 8. SIGNAL HANDLERS ===
-
     Component.onCompleted: {
         console.log("searchExpanded initialized");
     }
 
-    // === 9. FUNCTIONS ===
 }

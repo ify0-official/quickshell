@@ -5,25 +5,17 @@ Item {
     id: root
     objectName: "callCompact"
 
-    // === 1. METADATA ===
     implicitWidth: 200
     implicitHeight: 60
 
-    // === 2. SIGNALS ===
     signal answerRequested()
     signal declineRequested()
     signal muteRequested()
 
-    // === 3. PROPERTIES ===
     property string callerName: ""
     property bool isIncoming: false
     property bool isMuted: false
 
-    // === 4. ENUMS ===
-
-    // === 5. ATTACHED OBJECTS & BEHAVIORS ===
-
-    // === 6. CHILD OBJECTS (visual hierarchy) ===
     Rectangle {
         anchors.fill: parent
         color: "#333333"
@@ -104,13 +96,8 @@ Item {
         }
     }
 
-    // === 7. STATES & TRANSITIONS ===
-
-    // === 8. SIGNAL HANDLERS ===
-
     Component.onCompleted: {
         console.log("callCompact initialized");
     }
 
-    // === 9. FUNCTIONS ===
 }
