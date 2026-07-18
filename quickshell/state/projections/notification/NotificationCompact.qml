@@ -1,10 +1,10 @@
-// notiCompact.qml - Notification compact projection for iOS Dynamic Island
+// NotificationCompact.qml - Notification compact projection for iOS Dynamic Island
 import QtQuick
 import "stores"
 
 Item {
     id: root
-    objectName: "notiCompact"
+    objectName: "NotificationCompact"
 
     implicitWidth: 260
     implicitHeight: 56

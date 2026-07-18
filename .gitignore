@@ -1,84 +1,28 @@
 ```
-# Logs and temp files
-*.log
-*.tmp
-*.swp
+# QML compiled files
+*.qmlc
 
-# Environment
-.env
-.env.local
-*.env.*
-
-# Editors
-.vscode/
-.idea/
+# Build directories
+build/
+dist/
 
 # Dependencies
 node_modules/
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-venv/
-env/
-ENV/
-.venv/
-env.bak/
-venv.bak/
 
-# Build and distribution
-dist/
-build/
-*.egg-info/
-.eggs/
-.coverage
-htmlcov/
-coverage.xml
-.tox/
-.nox/
-.pytest_cache/
-.mypy_cache/
-.hypothesis/
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-Thumbs.db:encryptable
-desktop.ini
-*.nib
-*~
-*.bak
-*.swp
-*.swo
-*~
-
-# Python specific
-__pycache__/
-*.py[cod]
-*$py.class
-*$pyc.class
-*.so
-.Python
-.pytest_cache/
-.coverage*
-htmlcov/
-.coveragerc
-.python-version
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
-.coverage
-.noserc
-.pydevproject
+# IDE/Editor files
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# Original rules preserved
+# Logs
 *.log
+
+# Temporary files
+*.tmp
+
+# Environment files
+.env
+.env.local
+*.env.*
 ```

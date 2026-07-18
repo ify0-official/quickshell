@@ -1,10 +1,10 @@
-// callMinimal.qml - Call minimal projection for Dynamic Island
+// CallMinimal.qml - Call minimal projection for Dynamic Island
 import QtQuick
 import "stores"
 
 Item {
     id: root
-    objectName: "callMinimal"
+    objectName: "CallMinimal"
 
     implicitWidth: 140
     implicitHeight: 36

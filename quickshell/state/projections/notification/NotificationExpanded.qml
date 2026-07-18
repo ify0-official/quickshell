@@ -1,10 +1,10 @@
-// notiExpanded.qml - Notification expanded projection for iOS Dynamic Island
+// NotificationExpanded.qml - Notification expanded projection for iOS Dynamic Island
 import QtQuick
 import "stores"
 
 Item {
     id: root
-    objectName: "notiExpanded"
+    objectName: "NotificationExpanded"
 
     implicitWidth: 360
     implicitHeight: 240

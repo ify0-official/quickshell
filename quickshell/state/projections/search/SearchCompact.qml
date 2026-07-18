@@ -1,10 +1,10 @@
-// searchCompact.qml - Search compact projection for iOS Dynamic Island
+// SearchCompact.qml - Search compact projection for iOS Dynamic Island
 import QtQuick
 import "stores"
 
 Item {
     id: root
-    objectName: "searchCompact"
+    objectName: "SearchCompact"
 
     implicitWidth: 260
     implicitHeight: 48
