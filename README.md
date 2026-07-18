@@ -1,83 +1,274 @@
 # README.md
-This quickshell configuration has the following follow architecture:
+
+> **Quickshell** - A state-driven QtQuick/QML shell interface  
+> **Version:** 1.0.0 | **Qt Target:** 6.7+
+
+## Quick Start
+
+```bash
+# Build with CMake
+mkdir build && cd build
+cmake ..
+make
+
+# Run
+./quickshell
+```
+
+## Overview
+
+Quickshell is a **Hierarchical State Machine (HSM)** based shell interface that adapts its UI presentation based on the current mode:
+
+- **Minimal** - Essential info only (battery flash, notification dot)
+- **Compact** - Moderate detail with quick controls (sliders, previews)
+- **Expanded** - Full-featured view with complete controls (detailed stats, settings)
+
+Each state displays different **content types** (battery, volume, notifications, calls, etc.) with mode-specific **visual projections**.
+
+---
+
+## Architecture
+
+For detailed architecture documentation, see [ARCHITECTURE.md](ARCHITECTURE.md).
+
+### Core Concept
+
+```
+┌─────────────┐     ┌──────────────┐     ┌─────────────┐
+│   Services  │────▶│    State     │────▶│  Projections │
+│ PowerManager│     │   Registry   │     │  (Visual UI) │
+│BackendSocket│     │State Machines│     │             │
+└─────────────┘     └──────────────┘     └─────────────┘
+                           │
+                           ▼
+                    ┌──────────────┐
+                    │    Stores    │
+                    │Theme/Session │
+                    └──────────────┘
+```
+
+### Key Patterns
+
+1. **Hierarchical State Machine** - Three super states manage UI complexity
+2. **Content-Projections Separation** - Domain logic separate from visual representation
+3. **Store Pattern** - Centralized reactive state management
+
+---
+
+## Project Structure
 
 ```
 quickshell/
-├── shell.qml                 # entry point; minimal
-├── config.json               # user-customizable settings at runtime
-├── README.md                 # README.md
-├── CONVENTION.md             # restraints and best practices
-├── INSTRUCTION.md            # system-wide, must take into consideration
-├── CONTEXT.md                # current session context, update per session
-├── assets/                   # icons, images, fonts
-│   ├── icons/
-│   └── wallpapers/
-├── services/                 # backend abstractions & IPC
-│   ├── ipc/                  # socket/DBus communication handlers
-│   │   └── BackendSocket.qml
-│   └── system/               # system-level singletons
-│       └── PowerManager.qml
-├── state/                    # PURE STATE MANAGEMENT
-|   ├── STATECHART.md         # explanation of HSM
-│   ├── machines/             # HSM
-│   │   ├── ExpandedState.qml # expanded super state
-│   │   ├── CompactState.qml  # compact super state
-│   │   └── MinimalState.qml  # minimal super state
-│   ├── content/              # select projections based on island mode
-|   |   ├── VolumeContent.qml
-|   |   ├── BrightnessContent.qml
-|   |   ├── BatteryContent.qml
-|   |   ├── TimerContent.qml
-|   |   ├── NotificationContent.qml
-|   |   ├── CallContent.qml
-|   |   ├── SearchContent.qml
-|   |   ├── WorkspaceContent.qml
-|   |   └── MeetingContent.qml 
-|   └── projections/         # mode-specified visual adaptors
-|   |   ├── volume/ 
-|   |   |   ├── VolumeCompact.qml      # volume based fill
-|   |   |   └── VolumeExpanded.qml     # app+system volume
-|   |   ├── brightness/
-|   |   |   ├── BrightnessCompact.qml  # brightness based fill
-|   |   |   └── BrightnessExpanded.qml # brightness+night+auto
-|   |   ├── battery/
-|   |   |   ├── BatteryMinimal.qml     # status flash with duration
-|   |   |   ├── BatteryCompact.qml     # alert+battery
-|   |   |   └── BatteryExpanded.qml    # battery status+usage+time left
-|   |   ├── timer/
-|   |   |   ├── TimerMinimal.qml       # mini arc progress
-|   |   |   ├── TimerCompact.qml       # countdown + controls
-|   |   |   └── TimerExpanded.qml      # set custom countdown
-|   |   ├── notification/
-|   |   |   ├── notiMinimal.qml        # unread msg count 
-|   |   |   ├── notiCompact.qml        # msg content and truncated
-|   |   |   └── notiExpanded.qml       # full msg(longer limit)
-|   |   ├── call/
-|   |   |   ├── callMinimal.qml        # caller/receiver name
-|   |   |   └── callCompact.qml        # minimal + name + controls
-|   |   ├── search/
-|   |   |   ├── searchCompact.qml      # search bar
-|   |   |   └── searchExpanded.qml     # compact + results
-|   |   ├── workspace/
-|   |   |   └── workspaceMinimal.qml   # slide to workspace num
-|   |   └── meeting/
-|   |   |   ├── meetingMinimal.qml     # dot indicator(camera/mic)
-|   |   |   └── meetingCompact.qml     # meeting control
-│   ├── stores/               # global reactive state (singletons)
-│   │   ├── ThemeStore.qml
-│   │   └── SessionStore.qml
-│   └── StateRegistry.qml     # central access point for all state
-└── ui/                       # Purely presentational components
-    ├── bar/
-    │   ├── TopBar.qml
-    │   └── widgets/          # atomic UI elements
-    │       ├── ClockWidget.qml
-    │       └── Workspaces.qml
-    ├── notifications/
-    │   ├── NotificationPopup.qml
-    │   └── NotificationList.qml
-    └── common/               # reusable primitives
-        ├── Card.qml
-        └── IconButton.qml
+├── shell.qml                     # Entry point
+├── CMakeLists.txt                # Build configuration
+├── qmldir                        # QML module registration
+├── main.cpp                      # C++ bootstrap
+├── services/                     # Backend abstractions
+│   ├── ipc/BackendSocket.qml     # IPC communication
+│   └── system/PowerManager.qml   # System power management
+├── state/                        # State management layer
+│   ├── STATECHART.md             # HSM documentation
+│   ├── StateRegistry.qml         # Central state coordinator
+│   ├── stores/                   # Global singletons
+│   │   ├── ThemeStore.qml        # Theme tokens
+│   │   └── SessionStore.qml      # Session state
+│   ├── machines/                 # State machines
+│   │   ├── MinimalState.qml
+│   │   ├── CompactState.qml
+│   │   └── ExpandedState.qml
+│   ├── content/                  # Domain logic
+│   │   └── *.qml (8 content types)
+│   └── projections/              # Visual adaptors
+│       └── */*.qml (mode-specific)
 ```
+
+---
+
+## Documentation
+
+| File | Purpose |
+|------|---------|
+| [README.md](README.md) | This file - quick start and overview |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | Detailed system architecture and patterns |
+| [CONVENTION.md](CONVENTION.md) | Coding standards and best practices |
+| [MEMORY.md](MEMORY.md) | Long-term project knowledge |
+| [STATECHART.md](state/STATECHART.md) | Hierarchical State Machine documentation |
+| [CONTEXT.md](CONTEXT.md) | Current session context |
+| [INSTRUCTION.md](INSTRUCTION.md) | Development guidelines |
+
+---
+
+## Features
+
+### Content Types
+
+| Content | Minimal | Compact | Expanded |
+|---------|---------|---------|----------|
+| Battery | Status flash | Alert + level | Stats + usage + time |
+| Volume | - | Slider | App + system mixer |
+| Brightness | - | Slider | Brightness + night light |
+| Timer | Arc progress | Countdown + controls | Custom setup |
+| Notification | Count dot | Truncated message | Full message |
+| Call | Name | Name + controls | - |
+| Search | - | Search bar | Results |
+| Workspace | Number | - | - |
+| Meeting | Dot indicator | Controls | - |
+
+### State Transitions
+
+- **User Interaction** - Click/hover to expand
+- **Timeout** - Auto-collapse after inactivity
+- **Priority Events** - Incoming call forces expanded
+- **System Events** - Low battery triggers warnings
+
+---
+
+## Configuration
+
+### Runtime Settings (`config.json`)
+
+```json
+{
+  "theme": "dark",
+  "defaultState": "minimal",
+  "timeoutMs": 5000,
+  "doNotDisturb": false
+}
+```
+
+### Theme Customization
+
+Edit [`ThemeStore.qml`](quickshell/state/stores/ThemeStore.qml) to customize:
+- Colors (surface, text, error, success, etc.)
+- Corner radius values
+- Spacing constants
+- Font sizes
+- Animation durations
+
+---
+
+## Development
+
+### Prerequisites
+
+- Qt 6.7 or later
+- CMake 3.16+
+- C++17 compiler
+
+### Building
+
+```bash
+cd quickshell
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+make -j$(nproc)
+```
+
+### Running Tests
+
+```bash
+# Unit tests (when implemented)
+ctest --test-dir build
+
+# QML linting
+qmllint ../quickshell/
+
+# QML formatting
+qmlformat --inplace ../quickshell/
+```
+
+### Code Style
+
+All code follows strict conventions defined in [CONVENTION.md](CONVENTION.md):
+- PascalCase for components
+- 9-section component structure
+- No hardcoded colors/sizes (use ThemeStore)
+- Typed properties, `required` for inputs
+- URI-based imports (no relative paths)
+
+---
+
+## Extending Quickshell
+
+### Adding New Content Type
+
+1. Create content file in `state/content/`:
+   ```qml
+   // NetworkContent.qml
+   QtObject {
+       property int signalStrength: 0
+       property string connectionType: "wifi"
+   }
+   ```
+
+2. Create projections in `state/projections/network/`:
+   - `NetworkMinimal.qml`
+   - `NetworkCompact.qml`
+   - `NetworkExpanded.qml`
+
+3. Register in `CMakeLists.txt` and `StateRegistry.qml`
+
+### Adding New State Mode
+
+1. Create state machine in `state/machines/`:
+   ```qml
+   // FocusState.qml
+   QtObject {
+       signal stateEntered()
+       signal stateExited()
+       property bool isActive: false
+   }
+   ```
+
+2. Define transitions in `StateRegistry.qml`
+
+---
+
+## Troubleshooting
+
+### Common Issues
+
+**QML Import Errors**
+```
+module "Quickshell" is not installed
+```
+→ Ensure `qmldir` is in the correct location and CMake module is properly configured.
+
+**State Not Transitioning**
+→ Check `StateRegistry` console logs for guard condition failures.
+
+**Theme Not Applying**
+→ Verify `ThemeStore` is initialized before components load.
+
+### Debug Mode
+
+Enable verbose logging:
+```bash
+export QT_QPA_PLATFORM=xcb
+export QML_DEBUGGER_ENABLED=1
+./quickshell
+```
+
+---
+
+## Contributing
+
+1. Review [CONVENTION.md](CONVENTION.md) for coding standards
+2. Check [MEMORY.md](MEMORY.md) for architectural decisions
+3. Update [CONTEXT.md](CONTEXT.md) with session progress
+4. Add tests for new features (90% coverage target)
+
+---
+
+## License
+
+[Add your license here]
+
+---
+
+## Related Projects
+
+- [Qt Quick Documentation](https://doc.qt.io/qt-6/qmlapplications.html)
+- [QML Best Practices](https://wiki.qt.io/QML_Best_Practices)
+
 

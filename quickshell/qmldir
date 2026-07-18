@@ -1,0 +1,64 @@
+module Quickshell
+
+# State Registry and Stores
+singleton ThemeStore 1.0 state/stores/ThemeStore.qml
+singleton SessionStore 1.0 state/stores/SessionStore.qml
+StateRegistry 1.0 state/StateRegistry.qml
+
+# State Machines
+MinimalState 1.0 state/machines/MinimalState.qml
+CompactState 1.0 state/machines/CompactState.qml
+ExpandedState 1.0 state/machines/ExpandedState.qml
+
+# Content Selectors
+BatteryContent 1.0 state/content/BatteryContent.qml
+VolumeContent 1.0 state/content/VolumeContent.qml
+BrightnessContent 1.0 state/content/BrightnessContent.qml
+TimerContent 1.0 state/content/TimerContent.qml
+NotificationContent 1.0 state/content/NotificationContent.qml
+CallContent 1.0 state/content/CallContent.qml
+SearchContent 1.0 state/content/SearchContent.qml
+WorkspaceContent 1.0 state/content/WorkspaceContent.qml
+MeetingContent 1.0 state/content/MeetingContent.qml
+
+# Projections - Battery
+BatteryMinimal 1.0 state/projections/battery/BatteryMinimal.qml
+BatteryCompact 1.0 state/projections/battery/BatteryCompact.qml
+BatteryExpanded 1.0 state/projections/battery/BatteryExpanded.qml
+
+# Projections - Volume
+VolumeCompact 1.0 state/projections/volume/VolumeCompact.qml
+VolumeExpanded 1.0 state/projections/volume/VolumeExpanded.qml
+
+# Projections - Brightness
+BrightnessCompact 1.0 state/projections/brightness/BrightnessCompact.qml
+BrightnessExpanded 1.0 state/projections/brightness/BrightnessExpanded.qml
+
+# Projections - Timer
+TimerMinimal 1.0 state/projections/timer/TimerMinimal.qml
+TimerCompact 1.0 state/projections/timer/TimerCompact.qml
+TimerExpanded 1.0 state/projections/timer/TimerExpanded.qml
+
+# Projections - Notification
+notiMinimal 1.0 state/projections/notification/notiMinimal.qml
+notiCompact 1.0 state/projections/notification/notiCompact.qml
+notiExpanded 1.0 state/projections/notification/notiExpanded.qml
+
+# Projections - Call
+callMinimal 1.0 state/projections/call/callMinimal.qml
+callCompact 1.0 state/projections/call/callCompact.qml
+
+# Projections - Search
+searchCompact 1.0 state/projections/search/searchCompact.qml
+searchExpanded 1.0 state/projections/search/searchExpanded.qml
+
+# Projections - Workspace
+workspaceMinimal 1.0 state/projections/workspace/workspaceMinimal.qml
+
+# Projections - Meeting
+meetingMinimal 1.0 state/projections/meeting/meetingMinimal.qml
+meetingCompact 1.0 state/projections/meeting/meetingCompact.qml
+
+# Services
+PowerManager 1.0 services/system/PowerManager.qml
+BackendSocket 1.0 services/ipc/BackendSocket.qml
