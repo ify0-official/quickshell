@@ -125,10 +125,10 @@ All Compact and Expanded projections have been successfully updated to match the
 
 - **Design Tokens:** `store/ThemeStore.qml`
 - **Projections:** `projections/` directory
-- **Context:** `.ai/CONTEXT.md`
-- **Memory:** `.ai/MEMORY.md`
-- **Instructions:** `.ai/INSTRUCTION.md`
+- **Context:** `ai/CONTEXT.md`
+- **Memory:** `ai/MEMORY.md`
+- **Instructions:** `ai/INSTRUCTION.md`
 
 ---
 
-**Note to Future AI:** After completing any task from this list, update `.ai/CONTEXT.md` and `.ai/MEMORY.md` to reflect the new project state.
+**Note to Future AI:** After completing any task from this list, update `ai/CONTEXT.md` and `ai/MEMORY.md` to reflect the new project state. This is a MANDATORY requirement.
