@@ -10,9 +10,9 @@ Update all Quickshell UI components (Compact and Expanded projections) to match 
 
 ## Completed Work (Current Session)
 - ✅ `ThemeStore.qml` - New iOS color palette, spring constants, expanded tokens
-- ✅ All Minimal projections: `BatteryMinimal.qml`, `TimerMinimal.qml`, `notiMinimal.qml`, `callMinimal.qml`, `workspaceMinimal.qml`, `meetingMinimal.qml`
-- ✅ All Compact projections: `BatteryCompact.qml`, `VolumeCompact.qml`, `BrightnessCompact.qml`, `TimerCompact.qml`, `notiCompact.qml`, `callCompact.qml`, `searchCompact.qml`
-- ✅ All Expanded projections: `BatteryExpanded.qml`, `VolumeExpanded.qml`, `BrightnessExpanded.qml`, `TimerExpanded.qml`, `notiExpanded.qml`, `searchExpanded.qml`
+- ✅ All Minimal projections: `BatteryMinimal.qml`, `TimerMinimal.qml`, `NotificationMinimal.qml`, `CallMinimal.qml`, `WorkspaceMinimal.qml`, `MeetingMinimal.qml`
+- ✅ All Compact projections: `BatteryCompact.qml`, `VolumeCompact.qml`, `BrightnessCompact.qml`, `TimerCompact.qml`, `NotificationCompact.qml`, `CallCompact.qml`, `SearchCompact.qml`
+- ✅ All Expanded projections: `BatteryExpanded.qml`, `VolumeExpanded.qml`, `BrightnessExpanded.qml`, `TimerExpanded.qml`, `NotificationExpanded.qml`, `SearchExpanded.qml`
 
 ## Technical Environment Notes
 - **OS:** Arch Linux

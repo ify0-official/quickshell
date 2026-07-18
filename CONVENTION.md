@@ -65,20 +65,20 @@ quickshell/
 |   |   |   ├── TimerCompact.qml       # countdown + controls
 |   |   |   └── TimerExpanded.qml      # set custom countdown
 |   |   ├── notification/
-|   |   |   ├── notiMinimal.qml        # unread msg count 
-|   |   |   ├── notiCompact.qml        # msg content and truncated
-|   |   |   └── notiExpanded.qml       # full msg(longer limit)
+|   |   |   ├── NotificationMinimal.qml        # unread msg count 
+|   |   |   ├── NotificationCompact.qml        # msg content and truncated
+|   |   |   └── NotificationExpanded.qml       # full msg(longer limit)
 |   |   ├── call/
-|   |   |   ├── callMinimal.qml        # caller/receiver name
-|   |   |   └── callCompact.qml        # minimal + name + controls
+|   |   |   ├── CallMinimal.qml        # caller/receiver name
+|   |   |   └── CallCompact.qml        # minimal + name + controls
 |   |   ├── search/
-|   |   |   ├── searchCompact.qml      # search bar
-|   |   |   └── searchExpanded.qml     # compact + results
+|   |   |   ├── SearchCompact.qml      # search bar
+|   |   |   └── SearchExpanded.qml     # compact + results
 |   |   ├── workspace/
-|   |   |   └── workspaceMinimal.qml   # slide to workspace num
+|   |   |   └── WorkspaceMinimal.qml   # slide to workspace num
 |   |   └── meeting/
-|   |   |   ├── meetingMinimal.qml     # dot indicator(camera/mic)
-|   |   |   └── meetingCompact.qml     # meeting control
+|   |   |   ├── MeetingMinimal.qml     # dot indicator(camera/mic)
+|   |   |   └── MeetingCompact.qml     # meeting control
 └── ui/                       # Purely presentational components
     ├── bar/
     │   ├── TopBar.qml
