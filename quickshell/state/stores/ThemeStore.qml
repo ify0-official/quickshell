@@ -2,6 +2,8 @@
 // Provides all design tokens (colors, sizes, animations) for consistent styling across projections
 import QtQuick
 
+pragma Singleton
+
 QtObject {
     id: root
     objectName: "themeStore"
