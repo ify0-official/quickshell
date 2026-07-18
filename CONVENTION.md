@@ -1,6 +1,6 @@
 # CONVENTION.md
 > **Version:** 1.0.0 | **Qt Target:** 6.7+ | **Enforcement:** qmllint + eslint-plugin-qml  
-> **Last Updated:** 2026-07-18  
+> **Last Updated:** 2025-07-18  
 > **Scope:** All `.qml`
 
 ## 1. File Organization & Naming
