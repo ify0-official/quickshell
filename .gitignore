@@ -1,77 +1,110 @@
 ```
-# Compiled and build artifacts
-*.pyc
-__pycache__/
-*.qmlc
-*.jsc
+# Build artifacts
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
 *.o
-*.obj
+*.a
 *.so
-*.dll
+*.dylib
 *.exe
-*.class
-*.jar
-*.war
-*.zip
-*.tar.gz
-*.tar.bz2
-*.tar.xz
+*.dll
+
+# Qt/QML specific
+*.qmlc
+qmldir.bak
 
 # Dependencies
 node_modules/
-venv/
-.venv/
+
+# Logs
+*.log
+
+# Environment
 .env
 .env.local
-.env.*
-
-# Build directories
-build/
-dist/
-target/
-.gradle/
-.cargo/
-zig-cache/
-
-# Python specific
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-.venv/
-venv/
-ENV/
-
-# Qt/QML specific
-*.qm
-*.rcc
-moc_*.cpp
-qrc_*.cpp
-
-# Logs and temporary files
-*.log
-*.tmp
-*.swp
-*.swo
-*.bak
-*.~*
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-desktop.ini
+*.env.*
 
 # Editors
 .vscode/
 .idea/
-*.sublime-project
-*.sublime-workspace
-*.atom/
-*.vs/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage*
+.nox/
+*.cover
+*.log
+.pytest_cache/
+.mypy_cache/
+.hypothesis/
+
+# Node
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+node_modules/
+jspm_packages/
+*.tsbuildinfo
+.nyc_output
+coverage/
+.node_repl_history
+*.tgz
+
+# C++
+Debug/
+Release/
+x64/
+Debug-static/
+Release-static/
+*.pdb
+*.ilk
+*.gch
+*.gem
+*.rsp
+*.sln
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vcxproj.filters
+[ipP]rogress.xml
+*.VC.db
+*.VC.VC.opendb
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+CMakeScripts/
+Testing/
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
 ```
