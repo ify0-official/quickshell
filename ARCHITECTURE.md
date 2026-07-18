@@ -1,6 +1,6 @@
 # Quickshell Architecture
 
-> **Version:** 1.0.0 | **Last Updated:** 2026-07-18  
+> **Version:** 1.0.0 | **Last Updated:** 2025-07-18  
 > See also: [README.md](README.md) | [CONVENTION.md](CONVENTION.md) | [MEMORY.md](MEMORY.md) | [STATECHART.md](state/STATECHART.md)
 
 ## Overview
