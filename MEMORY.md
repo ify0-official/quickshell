@@ -31,6 +31,11 @@ quickshell/
 │   └── system/               # System-level singletons
 │       └── PowerManager.qml
 ├── state/                    # PURE STATE MANAGEMENT
+│   ├── STATECHART.md         # HSM documentation
+│   ├── StateRegistry.qml     # Central access point for all state
+│   ├── stores/               # Global reactive state (singletons)
+│   │   ├── ThemeStore.qml    # Centralized theme tokens (iOS Dynamic Island style)
+│   │   └── SessionStore.qml
 │   ├── machines/             # HSM super states
 │   │   ├── MinimalState.qml
 │   │   ├── CompactState.qml
@@ -45,20 +50,36 @@ quickshell/
 │   │   ├── SearchContent.qml
 │   │   ├── WorkspaceContent.qml
 │   │   └── MeetingContent.qml
-│   ├── stores/               # Global reactive state (singletons)
-│   │   ├── ThemeStore.qml    # Centralized theme tokens (iOS Dynamic Island style)
-│   │   └── SessionStore.qml
 │   └── projections/          # Mode-specific visual adaptors
 │       ├── battery/          # Battery projections
+│       │   ├── BatteryMinimal.qml
+│       │   ├── BatteryCompact.qml
+│       │   └── BatteryExpanded.qml
 │       ├── volume/           # Volume projections
+│       │   ├── VolumeCompact.qml
+│       │   └── VolumeExpanded.qml
 │       ├── brightness/       # Brightness projections
+│       │   ├── BrightnessCompact.qml
+│       │   └── BrightnessExpanded.qml
 │       ├── timer/            # Timer projections
+│       │   ├── TimerMinimal.qml
+│       │   ├── TimerCompact.qml
+│       │   └── TimerExpanded.qml
 │       ├── notification/     # Notification projections
+│       │   ├── notiMinimal.qml
+│       │   ├── notiCompact.qml
+│       │   └── notiExpanded.qml
 │       ├── call/             # Call projections
+│       │   ├── callMinimal.qml
+│       │   └── callCompact.qml
 │       ├── search/           # Search projections
+│       │   ├── searchCompact.qml
+│       │   └── searchExpanded.qml
 │       ├── workspace/        # Workspace projections
+│       │   └── workspaceMinimal.qml
 │       └── meeting/          # Meeting projections
-└── state/STATECHART.md       # HSM documentation
+│           ├── meetingMinimal.qml
+│           └── meetingCompact.qml
 ```
 
 ---
@@ -228,7 +249,6 @@ Test files should use `objectName` for element lookup, never index-based access.
 - Projection naming inconsistency (some camelCase, some PascalCase)
 - Some projections still use hardcoded colors (needs ThemeStore migration)
 - No test coverage yet
-- STATECHART.md needs detailed HSM documentation
 
 ---
 

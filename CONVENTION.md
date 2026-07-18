@@ -31,6 +31,10 @@ quickshell/
 │       └── PowerManager.qml
 ├── state/                    # PURE STATE MANAGEMENT
 |   ├── STATECHART.md         # explanation of HSM
+│   ├── StateRegistry.qml     # central access point for all state
+│   ├── stores/               # global reactive state (singletons)
+│   │   ├── ThemeStore.qml
+│   │   └── SessionStore.qml
 │   ├── machines/             # HSM
 │   │   ├── ExpandedState.qml # expanded super state
 │   │   ├── CompactState.qml  # compact super state
@@ -45,7 +49,7 @@ quickshell/
 |   |   ├── SearchContent.qml
 |   |   ├── WorkspaceContent.qml
 |   |   └── MeetingContent.qml 
-|   └── projections/         # mode-specified visual adaptors
+|   └── projections/          # mode-specified visual adaptors
 |   |   ├── volume/ 
 |   |   |   ├── VolumeCompact.qml      # volume based fill
 |   |   |   └── VolumeExpanded.qml     # app+system volume
@@ -75,10 +79,6 @@ quickshell/
 |   |   └── meeting/
 |   |   |   ├── meetingMinimal.qml     # dot indicator(camera/mic)
 |   |   |   └── meetingCompact.qml     # meeting control
-│   ├── stores/               # global reactive state (singletons)
-│   │   ├── ThemeStore.qml
-│   │   └── SessionStore.qml
-│   └── StateRegistry.qml     # central access point for all state
 └── ui/                       # Purely presentational components
     ├── bar/
     │   ├── TopBar.qml

@@ -54,10 +54,10 @@ quickshell/
 │       └── PowerManager.qml      # Power/battery management
 ├── state/                        # PURE STATE MANAGEMENT
 │   ├── STATECHART.md             # HSM documentation
+│   ├── StateRegistry.qml         # Central access point for all state
 │   ├── stores/                   # Global reactive state (singletons)
 │   │   ├── ThemeStore.qml        # Centralized theme tokens
 │   │   └── SessionStore.qml      # Session-wide state
-│   ├── StateRegistry.qml         # Central access point for all state
 │   ├── machines/                 # Hierarchical State Machines
 │   │   ├── MinimalState.qml      # Minimal super state
 │   │   ├── CompactState.qml      # Compact super state
@@ -141,7 +141,7 @@ This pattern separates **what** to display from **how** to display it:
 #### Projection Layer (`state/projections/*/*.qml`)
 - Visual representation tailored to a specific mode
 - Receives data from content layer via properties
-- Example: `BatteryMinimal.qml` shows simple bar, `BatteryExpanded.qml` shows detailed stats
+- Example: `BatteryMinimal.qml` shows simple bar, `BatteryCompact.qml` shows alert, `BatteryExpanded.qml` shows detailed stats
 
 **Benefits:**
 - Reuse domain logic across modes without duplication
@@ -457,7 +457,6 @@ All code follows strict conventions defined in [CONVENTION.md](CONVENTION.md):
 ### Technical Debt
 - Projection naming inconsistency (some camelCase, some PascalCase)
 - Incomplete theme integration (hardcoded colors in some projections)
-- STATECHART.md needs detailed transition diagrams
 - Test coverage not yet implemented
 
 ---

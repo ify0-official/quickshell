@@ -77,9 +77,45 @@ quickshell/
 │   │   ├── CompactState.qml
 │   │   └── ExpandedState.qml
 │   ├── content/                  # Domain logic
-│   │   └── *.qml (8 content types)
+│   │   ├── BatteryContent.qml
+│   │   ├── VolumeContent.qml
+│   │   ├── BrightnessContent.qml
+│   │   ├── TimerContent.qml
+│   │   ├── NotificationContent.qml
+│   │   ├── CallContent.qml
+│   │   ├── SearchContent.qml
+│   │   ├── WorkspaceContent.qml
+│   │   └── MeetingContent.qml
 │   └── projections/              # Visual adaptors
-│       └── */*.qml (mode-specific)
+│       ├── battery/
+│       │   ├── BatteryMinimal.qml
+│       │   ├── BatteryCompact.qml
+│       │   └── BatteryExpanded.qml
+│       ├── volume/
+│       │   ├── VolumeCompact.qml
+│       │   └── VolumeExpanded.qml
+│       ├── brightness/
+│       │   ├── BrightnessCompact.qml
+│       │   └── BrightnessExpanded.qml
+│       ├── timer/
+│       │   ├── TimerMinimal.qml
+│       │   ├── TimerCompact.qml
+│       │   └── TimerExpanded.qml
+│       ├── notification/
+│       │   ├── notiMinimal.qml
+│       │   ├── notiCompact.qml
+│       │   └── notiExpanded.qml
+│       ├── call/
+│       │   ├── callMinimal.qml
+│       │   └── callCompact.qml
+│       ├── search/
+│       │   ├── searchCompact.qml
+│       │   └── searchExpanded.qml
+│       ├── workspace/
+│       │   └── workspaceMinimal.qml
+│       └── meeting/
+│           ├── meetingMinimal.qml
+│           └── meetingCompact.qml
 ```
 
 ---
