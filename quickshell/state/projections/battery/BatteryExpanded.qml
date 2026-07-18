@@ -5,23 +5,13 @@ Item {
     id: root
     objectName: "batteryExpanded"
 
-    // === 1. METADATA ===
     implicitWidth: 300
     implicitHeight: 200
-
-    // === 2. SIGNALS ===
-
-    // === 3. PROPERTIES ===
     property int batteryLevel: 100
     property bool isCharging: false
     property int timeRemaining: 0
     property string usageDetails: ""
 
-    // === 4. ENUMS ===
-
-    // === 5. ATTACHED OBJECTS & BEHAVIORS ===
-
-    // === 6. CHILD OBJECTS (visual hierarchy) ===
     Rectangle {
         anchors.fill: parent
         color: "#222222"
@@ -94,13 +84,8 @@ Item {
         }
     }
 
-    // === 7. STATES & TRANSITIONS ===
-
-    // === 8. SIGNAL HANDLERS ===
-
     Component.onCompleted: {
         console.log("BatteryExpanded initialized");
     }
 
-    // === 9. FUNCTIONS ===
 }

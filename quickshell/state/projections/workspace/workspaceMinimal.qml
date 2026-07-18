@@ -5,22 +5,14 @@ Item {
     id: root
     objectName: "workspaceMinimal"
 
-    // === 1. METADATA ===
     implicitWidth: 100
     implicitHeight: 30
 
-    // === 2. SIGNALS ===
     signal workspaceChanged(int index)
 
-    // === 3. PROPERTIES ===
     property int currentWorkspace: 1
     property int workspaceCount: 4
 
-    // === 4. ENUMS ===
-
-    // === 5. ATTACHED OBJECTS & BEHAVIORS ===
-
-    // === 6. CHILD OBJECTS (visual hierarchy) ===
     Rectangle {
         anchors.fill: parent
         color: "#333333"
@@ -55,13 +47,8 @@ Item {
         }
     }
 
-    // === 7. STATES & TRANSITIONS ===
-
-    // === 8. SIGNAL HANDLERS ===
-
     Component.onCompleted: {
         console.log("workspaceMinimal initialized");
     }
 
-    // === 9. FUNCTIONS ===
 }
