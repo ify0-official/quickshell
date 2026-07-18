@@ -13,12 +13,22 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ARCHITECTURE.md",
+                "file": "SUGGESTION/SOLUTIONS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ARCHITECTURE"
+              "title": "SOLUTIONS"
+            }
+          },
+          {
+            "id": "fea09ccc1e0d03d4",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -94,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ARCHITECTURE.md",
+                "file": "SUGGESTION/SOLUTIONS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +114,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for ARCHITECTURE"
+              "title": "Backlinks for SOLUTIONS"
             }
           },
           {
@@ -185,40 +195,41 @@
   },
   "active": "c979d281a60734a6",
   "lastOpenFiles": [
-    "quickshell/STATECHART.md",
-    "NEXT-STEP.md",
-    "ai/CONTEXT.md",
-    "ai/INSTRUCTION.md",
-    "ARCHITECTURE.md",
-    "ai/MEMORY.md",
-    "README.md",
-    "CONVENTION.md",
-    "MEMORY.md",
-    "ai",
-    "CONTEXT.md",
-    "INSTRUCTION.md",
+    "quickshell/utils/Validators.js",
+    "quickshell/utils/README.md",
+    "quickshell/utils/Formatters.js",
+    "quickshell/utils",
+    "quickshell/ui/common/IconButton.qml",
+    "quickshell/ui/common/Card.qml",
+    "quickshell/ui/common",
+    "quickshell/ui/README.md",
+    "quickshell/ui",
+    "quickshell/state/projections/network/NetworkMinimal.qml",
+    "quickshell/state/projections/network/NetworkExpanded.qml",
+    "quickshell/state/projections/network/NetworkCompact.qml",
+    "quickshell/state/projections/network",
     "SUGGESTION/README.md",
     "SUGGESTION/PROBLEMS.md",
-    "SUGGESTION/SUGGESTIONS.md",
+    "ai/MEMORY.md",
+    "ai/CONTEXT.md",
+    "quickshell/state/README.md",
+    "quickshell/README.md",
+    "quickshell/STATECHART.md",
+    "quickshell/services/README.md",
+    "CHANGELOG.md",
+    "ARCHITECTURE.md",
+    "CONVENTION.md",
+    "CONTRIBUTING.md",
     "SUGGESTION/SOLUTIONS.md",
-    "SUGGESTION",
+    "SUGGESTION/SUGGESTIONS.md",
+    "NEXT-STEP.md",
+    "ai/INSTRUCTION.md",
+    "README.md",
+    "MEMORY.md",
+    "CONTEXT.md",
+    "INSTRUCTION.md",
     "state/STATECHART.md",
     "quickshell/state/stores/README.md",
-    "quickshell/state/projections/meeting/meetingCompact.qml",
-    "quickshell/state/projections/README.md",
-    "quickshell/state/machines/README.md",
-    "quickshell/state/content/README.md",
-    "quickshell/state/README.md",
-    "quickshell/services/system/README.md",
-    "quickshell/services/ipc/README.md",
-    "quickshell/services/README.md",
-    "quickshell/README.md",
-    "quickshell/state/stores/ThemeStore.qml",
-    "quickshell/state/stores/SessionStore.qml",
-    "quickshell/state/stores",
-    "quickshell/state/StateRegistry.qml",
-    "quickshell/qmldir",
-    "quickshell/main.cpp",
-    "quickshell/CMakeLists.txt"
+    "quickshell/state/projections/README.md"
   ]
 }
