@@ -1,0 +1,224 @@
+{
+  "main": {
+    "id": "e290997d52a11952",
+    "type": "split",
+    "children": [
+      {
+        "id": "b3f872e48b77b4dd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c979d281a60734a6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ARCHITECTURE.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "ARCHITECTURE"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "32c65da545a1009b",
+    "type": "split",
+    "children": [
+      {
+        "id": "d3c48b110470a9a7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ecb778ce8b3f40e6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "159925943b3f380b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "b60289fe838516c9",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 210.50390243530273
+  },
+  "right": {
+    "id": "8bc74acac14fb879",
+    "type": "split",
+    "children": [
+      {
+        "id": "c7184c56383463bb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7cfcbc318da5e842",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "ARCHITECTURE.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for ARCHITECTURE"
+            }
+          },
+          {
+            "id": "d72fc3dccc96f3b3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "CONVENTION.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from CONVENTION"
+            }
+          },
+          {
+            "id": "4364e66f364c9c9e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "36be4eea3a9eac4a",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "75644a4ef480b1b6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "CONVENTION.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of CONVENTION"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "c979d281a60734a6",
+  "lastOpenFiles": [
+    "quickshell/STATECHART.md",
+    "NEXT-STEP.md",
+    "ai/CONTEXT.md",
+    "ai/INSTRUCTION.md",
+    "ARCHITECTURE.md",
+    "ai/MEMORY.md",
+    "README.md",
+    "CONVENTION.md",
+    "MEMORY.md",
+    "ai",
+    "CONTEXT.md",
+    "INSTRUCTION.md",
+    "SUGGESTION/README.md",
+    "SUGGESTION/PROBLEMS.md",
+    "SUGGESTION/SUGGESTIONS.md",
+    "SUGGESTION/SOLUTIONS.md",
+    "SUGGESTION",
+    "state/STATECHART.md",
+    "quickshell/state/stores/README.md",
+    "quickshell/state/projections/meeting/meetingCompact.qml",
+    "quickshell/state/projections/README.md",
+    "quickshell/state/machines/README.md",
+    "quickshell/state/content/README.md",
+    "quickshell/state/README.md",
+    "quickshell/services/system/README.md",
+    "quickshell/services/ipc/README.md",
+    "quickshell/services/README.md",
+    "quickshell/README.md",
+    "quickshell/state/stores/ThemeStore.qml",
+    "quickshell/state/stores/SessionStore.qml",
+    "quickshell/state/stores",
+    "quickshell/state/StateRegistry.qml",
+    "quickshell/qmldir",
+    "quickshell/main.cpp",
+    "quickshell/CMakeLists.txt"
+  ]
+}
