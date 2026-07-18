@@ -1,15 +1,10 @@
 // shell.qml - Entry point for Quickshell
 import QtQuick
-import "state"
-import "state/stores"
-import "state/machines"
+import Quickshell
 
-Item {
+ShellRoot {
     id: root
     objectName: "shellRoot"
-
-    width: 1920
-    height: 1080
 
     // === Store Instances ===
     property var themeStore: null
@@ -22,6 +17,72 @@ Item {
     property var minimalState: null
     property var compactState: null
     property var expandedState: null
+
+    // === Visual Pill Bar ===
+    ShellSurface {
+        id: pillBar
+        layer.enabled: true
+        layer.smooth: true
+        
+        // Position at top center of screen
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        
+        // Dynamic size based on state
+        width: currentStateWidth
+        height: currentStateHeight
+        
+        property real currentStateWidth: 200
+        property real currentStateHeight: 40
+        
+        visible: true
+        
+        Rectangle {
+            id: barContainer
+            anchors.fill: parent
+            color: root.themeStore ? root.themeStore.islandSurface : "#1a1a1a"
+            radius: root.themeStore ? root.themeStore.radiusFull : 20
+            
+            // Content container - shows workspace dots by default (minimal state)
+            Row {
+                id: contentRow
+                anchors.centerIn: parent
+                spacing: root.themeStore ? root.themeStore.spacingXs : 4
+                
+                Repeater {
+                    model: 4
+                    
+                    delegate: Rectangle {
+                        id: workspaceDot
+                        width: 24
+                        height: 24
+                        color: {
+                            if (!root.themeStore) return "#2c2c2e"
+                            return (index + 1 === 1) ? root.themeStore.successColor : root.themeStore.surfaceLight
+                        }
+                        radius: root.themeStore ? root.themeStore.radiusFull : 12
+                        
+                        Behavior on color {
+                            ColorAnimation {
+                                duration: root.themeStore ? root.themeStore.durationFast : 200
+                            }
+                        }
+                        
+                        Text {
+                            anchors.centerIn: parent
+                            text: (index + 1).toString()
+                            color: root.themeStore ? root.themeStore.textColor : "#ffffff"
+                            font.pixelSize: root.themeStore ? root.themeStore.fontSizeXs : 11
+                            font.weight: (index + 1 === 1) ? 
+                                (root.themeStore ? root.themeStore.fontWeightSemiBold : Font.DemiBold) : 
+                                (root.themeStore ? root.themeStore.fontWeightRegular : Font.Normal)
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     Component.onCompleted: {
         // Initialize stores
