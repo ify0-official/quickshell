@@ -2,9 +2,13 @@
 import QtQuick
 import Quickshell
 
-ShellRoot {
+Item {
     id: root
     objectName: "shellRoot"
+
+    // Make the root item fill the screen
+    width: Screen.width
+    height: Screen.height
 
     // === Store Instances ===
     property var themeStore: null
@@ -19,7 +23,7 @@ ShellRoot {
     property var expandedState: null
 
     // === Visual Pill Bar ===
-    ShellSurface {
+    Rectangle {
         id: pillBar
         layer.enabled: true
         layer.smooth: true
