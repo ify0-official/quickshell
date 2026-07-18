@@ -1,10 +1,10 @@
-// workspaceMinimal.qml - Workspace minimal projection for Dynamic Island
+// WorkspaceMinimal.qml - Workspace minimal projection for Dynamic Island
 import QtQuick
 import "stores"
 
 Item {
     id: root
-    objectName: "workspaceMinimal"
+    objectName: "WorkspaceMinimal"
 
     implicitWidth: 120
     implicitHeight: 36

@@ -1,10 +1,10 @@
-// searchExpanded.qml - Search expanded projection for iOS Dynamic Island
+// SearchExpanded.qml - Search expanded projection for iOS Dynamic Island
 import QtQuick
 import "stores"
 
 Item {
     id: root
-    objectName: "searchExpanded"
+    objectName: "SearchExpanded"
 
     implicitWidth: 420
     implicitHeight: 320

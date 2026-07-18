@@ -1,10 +1,10 @@
-// meetingMinimal.qml - Meeting minimal projection for Dynamic Island
+// MeetingMinimal.qml - Meeting minimal projection for Dynamic Island
 import QtQuick
 import "stores"
 
 Item {
     id: root
-    objectName: "meetingMinimal"
+    objectName: "MeetingMinimal"
 
     implicitWidth: 72
     implicitHeight: 36

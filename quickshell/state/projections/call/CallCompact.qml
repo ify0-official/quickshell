@@ -1,10 +1,10 @@
-// callCompact.qml - Call compact projection for iOS Dynamic Island
+// CallCompact.qml - Call compact projection for iOS Dynamic Island
 import QtQuick
 import "stores"
 
 Item {
     id: root
-    objectName: "callCompact"
+    objectName: "CallCompact"
 
     implicitWidth: 220
     implicitHeight: 56

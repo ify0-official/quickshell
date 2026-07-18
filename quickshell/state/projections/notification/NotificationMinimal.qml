@@ -1,10 +1,10 @@
-// notiMinimal.qml - Notification minimal projection for Dynamic Island
+// NotificationMinimal.qml - Notification minimal projection for Dynamic Island
 import QtQuick
 import "stores"
 
 Item {
     id: root
-    objectName: "notiMinimal"
+    objectName: "NotificationMinimal"
 
     implicitWidth: 48
     implicitHeight: 48

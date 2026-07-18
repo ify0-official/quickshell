@@ -1,10 +1,10 @@
-// meetingCompact.qml - Meeting compact projection for Dynamic Island with camera/mic controls
+// MeetingCompact.qml - Meeting compact projection for Dynamic Island with camera/mic controls
 import QtQuick
 import "stores"
 
 Item {
     id: root
-    objectName: "meetingCompact"
+    objectName: "MeetingCompact"
 
     implicitWidth: 180
     implicitHeight: 48
