@@ -5,23 +5,13 @@ Item {
     id: root
     objectName: "notiExpanded"
 
-    // === 1. METADATA ===
     implicitWidth: 350
     implicitHeight: 200
-
-    // === 2. SIGNALS ===
-
-    // === 3. PROPERTIES ===
     property int unreadCount: 0
     property string fullMessage: ""
     property string senderName: ""
     property string timestamp: ""
 
-    // === 4. ENUMS ===
-
-    // === 5. ATTACHED OBJECTS & BEHAVIORS ===
-
-    // === 6. CHILD OBJECTS (visual hierarchy) ===
     Rectangle {
         anchors.fill: parent
         color: "#222222"
@@ -76,13 +66,8 @@ Item {
         }
     }
 
-    // === 7. STATES & TRANSITIONS ===
-
-    // === 8. SIGNAL HANDLERS ===
-
     Component.onCompleted: {
         console.log("notiExpanded initialized");
     }
 
-    // === 9. FUNCTIONS ===
 }

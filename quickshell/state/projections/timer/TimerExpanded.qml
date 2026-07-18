@@ -5,26 +5,18 @@ Item {
     id: root
     objectName: "timerExpanded"
 
-    // === 1. METADATA ===
     implicitWidth: 300
     implicitHeight: 200
 
-    // === 2. SIGNALS ===
     signal startRequested()
     signal stopRequested()
     signal resetRequested()
     signal durationSet(int seconds)
 
-    // === 3. PROPERTIES ===
     property int remainingTime: 0
     property int duration: 60
     property bool isRunning: false
 
-    // === 4. ENUMS ===
-
-    // === 5. ATTACHED OBJECTS & BEHAVIORS ===
-
-    // === 6. CHILD OBJECTS (visual hierarchy) ===
     Rectangle {
         anchors.fill: parent
         color: "#222222"
@@ -133,15 +125,10 @@ Item {
         }
     }
 
-    // === 7. STATES & TRANSITIONS ===
-
-    // === 8. SIGNAL HANDLERS ===
-
     Component.onCompleted: {
         console.log("TimerExpanded initialized");
     }
 
-    // === 9. FUNCTIONS ===
     function formatTime(seconds) {
         var mins = Math.floor(seconds / 60);
         var secs = seconds % 60;

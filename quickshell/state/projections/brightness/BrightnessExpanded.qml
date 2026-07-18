@@ -5,22 +5,12 @@ Item {
     id: root
     objectName: "brightnessExpanded"
 
-    // === 1. METADATA ===
     implicitWidth: 300
     implicitHeight: 200
-
-    // === 2. SIGNALS ===
-
-    // === 3. PROPERTIES ===
     property real brightnessLevel: 0.8
     property bool nightLightEnabled: false
     property bool autoBrightnessEnabled: false
 
-    // === 4. ENUMS ===
-
-    // === 5. ATTACHED OBJECTS & BEHAVIORS ===
-
-    // === 6. CHILD OBJECTS (visual hierarchy) ===
     Rectangle {
         anchors.fill: parent
         color: "#222222"
@@ -82,13 +72,8 @@ Item {
         }
     }
 
-    // === 7. STATES & TRANSITIONS ===
-
-    // === 8. SIGNAL HANDLERS ===
-
     Component.onCompleted: {
         console.log("BrightnessExpanded initialized");
     }
 
-    // === 9. FUNCTIONS ===
 }

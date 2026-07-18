@@ -5,25 +5,17 @@ Item {
     id: root
     objectName: "timerCompact"
 
-    // === 1. METADATA ===
     implicitWidth: 200
     implicitHeight: 80
 
-    // === 2. SIGNALS ===
     signal startRequested()
     signal stopRequested()
     signal resetRequested()
 
-    // === 3. PROPERTIES ===
     property int remainingTime: 0
     property int duration: 60
     property bool isRunning: false
 
-    // === 4. ENUMS ===
-
-    // === 5. ATTACHED OBJECTS & BEHAVIORS ===
-
-    // === 6. CHILD OBJECTS (visual hierarchy) ===
     Rectangle {
         anchors.fill: parent
         color: "#333333"
@@ -89,15 +81,10 @@ Item {
         }
     }
 
-    // === 7. STATES & TRANSITIONS ===
-
-    // === 8. SIGNAL HANDLERS ===
-
     Component.onCompleted: {
         console.log("TimerCompact initialized");
     }
 
-    // === 9. FUNCTIONS ===
     function formatTime(seconds) {
         var mins = Math.floor(seconds / 60);
         var secs = seconds % 60;
