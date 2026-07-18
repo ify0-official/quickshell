@@ -47,10 +47,10 @@ Quickshell implements a **Hierarchical State Machine (HSM)** that manages UI pre
 **Active Projections:**
 - `BatteryMinimal.qml` - Status flash with duration indicator
 - `TimerMinimal.qml` - Mini arc progress
-- `notiMinimal.qml` - Unread message count dot
-- `callMinimal.qml` - Caller/receiver name only
-- `workspaceMinimal.qml` - Slide to workspace number
-- `meetingMinimal.qml` - Dot indicator (camera/mic)
+- `NotificationMinimal.qml` - Unread message count dot
+- `CallMinimal.qml` - Caller/receiver name only
+- `WorkspaceMinimal.qml` - Slide to workspace number
+- `MeetingMinimal.qml` - Dot indicator (camera/mic)
 
 **Entry Actions:**
 1. Hide all non-essential UI elements
@@ -77,10 +77,10 @@ Quickshell implements a **Hierarchical State Machine (HSM)** that manages UI pre
 - `VolumeCompact.qml` - Volume based fill slider
 - `BrightnessCompact.qml` - Brightness based fill
 - `TimerCompact.qml` - Countdown + controls
-- `notiCompact.qml` - Message content (truncated)
-- `callCompact.qml` - Minimal + name + controls
-- `searchCompact.qml` - Search bar
-- `meetingCompact.qml` - Meeting control buttons
+- `NotificationCompact.qml` - Message content (truncated)
+- `CallCompact.qml` - Minimal + name + controls
+- `SearchCompact.qml` - Search bar
+- `MeetingCompact.qml` - Meeting control buttons
 
 **Entry Actions:**
 1. Expand UI from minimal state
@@ -107,8 +107,8 @@ Quickshell implements a **Hierarchical State Machine (HSM)** that manages UI pre
 - `VolumeExpanded.qml` - App + system volume mixer
 - `BrightnessExpanded.qml` - Brightness + night light + auto
 - `TimerExpanded.qml` - Set custom countdown
-- `notiExpanded.qml` - Full message (extended limit)
-- `searchExpanded.qml` - Compact + search results
+- `NotificationExpanded.qml` - Full message (extended limit)
+- `SearchExpanded.qml` - Compact + search results
 - *(call has no expanded projection)*
 - *(workspace has no expanded projection)*
 - *(meeting has no expanded projection)*

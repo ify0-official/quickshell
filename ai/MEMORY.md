@@ -20,17 +20,17 @@ Updated the following files with iOS Dynamic Island styling:
 - `VolumeCompact.qml` - Icon integration, hover effects, smooth transitions
 - `BrightnessCompact.qml` - Sun icon, gradient indicators, spring animations
 - `TimerCompact.qml` - Circular progress, time display, status badges
-- `notiCompact.qml` - Notification preview, app icons, dismiss indicators
-- `callCompact.qml` - Caller info, action buttons, pulse animations
-- `searchCompact.qml` - Search icon, input field styling, focus states
+- `NotificationCompact.qml` - Notification preview, app icons, dismiss indicators
+- `CallCompact.qml` - Caller info, action buttons, pulse animations
+- `SearchCompact.qml` - Search icon, input field styling, focus states
 
 **Expanded Projections:**
 - `BatteryExpanded.qml` - Detailed stats, expanded progress visualization
 - `VolumeExpanded.qml` - Volume slider, device indicators, mute toggle
 - `BrightnessExpanded.qml` - Brightness slider, auto-toggle, visual feedback
 - `TimerExpanded.qml` - Full timer controls, lap times, progress ring
-- `notiExpanded.qml` - Full notification content, action buttons, grouping
-- `searchExpanded.qml` - Search results list, query highlighting, recent searches
+- `NotificationExpanded.qml` - Full notification content, action buttons, grouping
+- `SearchExpanded.qml` - Search results list, query highlighting, recent searches
 
 ### 3. Key Design Changes Implemented
 - Imported `ThemeStore {}` in all projection files
@@ -68,11 +68,11 @@ Updated the following files with iOS Dynamic Island styling:
 - `/projections/BrightnessExpanded.qml`
 - `/projections/TimerCompact.qml`
 - `/projections/TimerExpanded.qml`
-- `/projections/notiCompact.qml`
-- `/projections/notiExpanded.qml`
-- `/projections/callCompact.qml`
-- `/projections/searchCompact.qml`
-- `/projections/searchExpanded.qml`
+- `/projections/NotificationCompact.qml`
+- `/projections/NotificationExpanded.qml`
+- `/projections/CallCompact.qml`
+- `/projections/SearchCompact.qml`
+- `/projections/SearchExpanded.qml`
 
 ---
 

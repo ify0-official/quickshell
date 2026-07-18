@@ -1,28 +1,54 @@
 ```
-# QML compiled files
+# Compiled and build artifacts
+*.pyc
+__pycache__/
 *.qmlc
-
-# Build directories
-build/
-dist/
+*.jsc
 
 # Dependencies
 node_modules/
+venv/
+.venv/
+.julia/
+.zig-cache/
 
-# IDE/Editor files
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# Logs
-*.log
+# OS generated files
+.DS_Store
+Thumbs.db
 
-# Temporary files
-*.tmp
+# Build outputs
+dist/
+build/
+target/
+*.exe
+*.dll
+*.so
+*.a
+*.out
 
-# Environment files
-.env
-.env.local
-*.env.*
+# Coverage reports
+coverage/
+htmlcov/
+.coverage
+
+# Testing
+.mypy_cache/
+.pytest_cache/
 ```

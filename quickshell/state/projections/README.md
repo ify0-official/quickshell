@@ -28,21 +28,21 @@ projections/
 │   ├── TimerCompact.qml     # Countdown with controls
 │   └── TimerExpanded.qml    # Custom timer setup
 ├── notification/            # Notification domain projections
-│   ├── notiMinimal.qml      # Unread count dot
-│   ├── notiCompact.qml      # Message preview (truncated)
-│   └── notiExpanded.qml     # Full message view
+│   ├── NotificationMinimal.qml      # Unread count dot
+│   ├── NotificationCompact.qml      # Message preview (truncated)
+│   └── NotificationExpanded.qml     # Full message view
 ├── call/                    # Call domain projections
-│   ├── callMinimal.qml      # Caller name only
-│   ├── callCompact.qml      # Name + quick controls
+│   ├── CallMinimal.qml      # Caller name only
+│   ├── CallCompact.qml      # Name + quick controls
 │   └── (callExpanded.qml)   # Not needed - Compact is sufficient
 ├── search/                  # Search domain projections
-│   ├── searchCompact.qml    # Search bar
-│   └── searchExpanded.qml   # Search bar + results list
+│   ├── SearchCompact.qml    # Search bar
+│   └── SearchExpanded.qml   # Search bar + results list
 ├── workspace/               # Workspace domain projections
-│   └── workspaceMinimal.qml # Workspace number indicator
+│   └── WorkspaceMinimal.qml # Workspace number indicator
 └── meeting/                 # Meeting domain projections
-    ├── meetingMinimal.qml   # Camera/mic status dots
-    └── meetingCompact.qml   # Status indicators + platform icon
+    ├── MeetingMinimal.qml   # Camera/mic status dots
+    └── MeetingCompact.qml   # Status indicators + platform icon
 ```
 
 ## Parent-Sibling-Child Relationships
@@ -67,11 +67,11 @@ projections/
 | Volume | ❌ (no minimal) | ✅ VolumeCompact | ✅ VolumeExpanded |
 | Brightness | ❌ (no minimal) | ✅ BrightnessCompact | ✅ BrightnessExpanded |
 | Timer | ✅ TimerMinimal | ✅ TimerCompact | ✅ TimerExpanded |
-| Notification | ✅ notiMinimal | ✅ notiCompact | ✅ notiExpanded |
-| Call | ✅ callMinimal | ✅ callCompact | ❌ (not needed) |
-| Search | ❌ (no minimal) | ✅ searchCompact | ✅ searchExpanded |
-| Workspace | ✅ workspaceMinimal | ❌ (no compact) | ❌ (no expanded) |
-| Meeting | ✅ meetingMinimal | ✅ meetingCompact | ❌ (not needed) |
+| Notification | ✅ NotificationMinimal | ✅ NotificationCompact | ✅ NotificationExpanded |
+| Call | ✅ CallMinimal | ✅ CallCompact | ❌ (not needed) |
+| Search | ❌ (no minimal) | ✅ SearchCompact | ✅ SearchExpanded |
+| Workspace | ✅ WorkspaceMinimal | ❌ (no compact) | ❌ (no expanded) |
+| Meeting | ✅ MeetingMinimal | ✅ MeetingCompact | ❌ (not needed) |
 
 ## Projection Structure
 
@@ -205,7 +205,7 @@ All projections follow these design principles:
 | Pattern | Example | Notes |
 |---------|---------|-------|
 | `[Domain]Minimal.qml` | `BatteryMinimal.qml` | PascalCase preferred |
-| `[domain]Minimal.qml` | `notiMinimal.qml` | camelCase accepted (legacy) |
+| `[domain]Minimal.qml` | `NotificationMinimal.qml` | camelCase accepted (legacy) |
 | `[Domain]Compact.qml` | `VolumeCompact.qml` | PascalCase preferred |
 | `[Domain]Expanded.qml` | `TimerExpanded.qml` | PascalCase preferred |
 

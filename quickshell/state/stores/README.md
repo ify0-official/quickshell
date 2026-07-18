@@ -14,7 +14,8 @@ This is the **global state layer** within the state management system:
 ```
 stores/
 ├── ThemeStore.qml      # iOS Dynamic Island design tokens
-└── SessionStore.qml    # Session-wide state and user preferences
+├── SessionStore.qml    # Session-wide state and user preferences
+└── AnimationStore.qml  # Centralized animation constants and utilities
 ```
 
 ## Parent-Sibling-Child Relationships
@@ -29,7 +30,7 @@ stores/
 - **`StateRegistry.qml`** - Registry holds references to store instances
 
 ### Children
-- **None** - Both stores are leaf singletons
+- **None** - All three stores are leaf singletons
 
 ## Key Files
 
@@ -37,6 +38,7 @@ stores/
 |------|---------|----------------|-----------|
 | `ThemeStore.qml` | Design tokens (colors, sizes, animations) | `islandSurface`, `radiusFull`, `durationFast`, `springStiffness` | All projections |
 | `SessionStore.qml` | Session state and preferences | `isSessionActive`, `doNotDisturb`, `inMeeting`, `onCall` | State machines, content objects |
+| `AnimationStore.qml` | Animation constants and utilities | `instant`, `fast`, `normal`, `slow`, `morph`, `springStiffness` | All projections with animations |
 
 ## ThemeStore Structure
 
@@ -142,6 +144,12 @@ Component.onCompleted: {
         import QtQuick
         import "state/stores"
         SessionStore {}
+    `, root);
+
+    root.animationStore = Qt.createQmlObject(`
+        import QtQuick
+        import "state/stores"
+        AnimationStore {}
     `, root);
 }
 ```

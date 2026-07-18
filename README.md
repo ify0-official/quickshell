@@ -102,20 +102,20 @@ quickshell/
 │       │   ├── TimerCompact.qml
 │       │   └── TimerExpanded.qml
 │       ├── notification/
-│       │   ├── notiMinimal.qml
-│       │   ├── notiCompact.qml
-│       │   └── notiExpanded.qml
+│       │   ├── NotificationMinimal.qml
+│       │   ├── NotificationCompact.qml
+│       │   └── NotificationExpanded.qml
 │       ├── call/
-│       │   ├── callMinimal.qml
-│       │   └── callCompact.qml
+│       │   ├── CallMinimal.qml
+│       │   └── CallCompact.qml
 │       ├── search/
-│       │   ├── searchCompact.qml
-│       │   └── searchExpanded.qml
+│       │   ├── SearchCompact.qml
+│       │   └── SearchExpanded.qml
 │       ├── workspace/
-│       │   └── workspaceMinimal.qml
+│       │   └── WorkspaceMinimal.qml
 │       └── meeting/
-│           ├── meetingMinimal.qml
-│           └── meetingCompact.qml
+│           ├── MeetingMinimal.qml
+│           └── MeetingCompact.qml
 ```
 
 ---

@@ -83,16 +83,16 @@ All Compact and Expanded projections have been successfully updated to match the
 **Note:** This was intentionally deferred to focus on styling first.
 
 **Actions:**
-- [ ] Rename `notiCompact.qml` → `NotificationCompact.qml`
-- [ ] Rename `notiExpanded.qml` → `NotificationExpanded.qml`
-- [ ] Rename `notiMinimal.qml` → `NotificationMinimal.qml`
+- [ ] Rename `NotificationCompact.qml` → `NotificationCompact.qml`
+- [ ] Rename `NotificationExpanded.qml` → `NotificationExpanded.qml`
+- [ ] Rename `NotificationMinimal.qml` → `NotificationMinimal.qml`
 - [ ] Update all import statements referencing these files
 - [ ] Document naming convention in a CONTRIBUTING.md file
 
 **Related Files:**
-- `projections/notiCompact.qml`
-- `projections/notiExpanded.qml`
-- `projections/notiMinimal.qml`
+- `projections/NotificationCompact.qml`
+- `projections/NotificationExpanded.qml`
+- `projections/NotificationMinimal.qml`
 - All files that import these projections
 
 ---
