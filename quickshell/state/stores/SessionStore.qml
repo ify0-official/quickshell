@@ -1,6 +1,8 @@
 // SessionStore.qml - Session-wide state singleton
 import QtQuick
 
+pragma Singleton
+
 QtObject {
     id: root
     objectName: "sessionStore"
