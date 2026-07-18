@@ -25,8 +25,8 @@ Update all Quickshell UI components (Compact and Expanded projections) to match 
 ## File Structure Reference
 - `/projections/` - Contains all projection components (Minimal, Compact, Expanded variants)
 - `/stores/ThemeStore.qml` - Centralized design tokens and theme configuration
-- `/ai/` - AI session documentation (CONTEXT.md, MEMORY.md, INSTRUCTION.md)
-- `/NEXT-STEP.md` - Future improvement suggestions and prioritized tasks
+- `/ai/` - AI session documentation ([[CONTEXT]], [[MEMORY]], [[INSTRUCTION]])
+- [[NEXT-STEP]] - Future improvement suggestions and prioritized tasks
 
 ---
 

@@ -126,7 +126,7 @@ Planned additions to this directory:
 
 ## Related Documentation
 
-- [../../ARCHITECTURE.md](../../ARCHITECTURE.md) - System architecture
-- [../README.md](../README.md) - Services layer overview
+- [[ARCHITECTURE]] - System architecture
+- [[quickshell/README]] - Services layer overview
 - [../../state/content/BatteryContent.qml](../../state/content/BatteryContent.qml) - Primary consumer
-- [../../MEMORY.md](../../MEMORY.md) - Service implementation patterns
+- [[ai/MEMORY]] - Service implementation patterns

@@ -1,7 +1,7 @@
 # SOLUTIONS.md
 
 > **Proposed Solutions for Quickshell Improvements**  
-> Implementation approaches for suggestions in [SUGGESTIONS.md](SUGGESTIONS.md)
+> Implementation approaches for suggestions in [[SUGGESTIONS]]
 
 ---
 
@@ -610,4 +610,4 @@ jobs:
 
 ---
 
-> **Next Step:** Review [PROBLEMS.md](PROBLEMS.md) for potential drawbacks and risk analysis before implementation.
+> **Next Step:** Review [[PROBLEMS]] for potential drawbacks and risk analysis before implementation.

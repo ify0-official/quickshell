@@ -81,6 +81,6 @@ BackendSocket {
 
 ## Related Documentation
 
-- [../../ARCHITECTURE.md](../../ARCHITECTURE.md) - System architecture
-- [../README.md](../README.md) - Services layer overview
-- [../../state/STATECHART.md](../../state/STATECHART.md) - How IPC events trigger state changes
+- [[ARCHITECTURE]] - System architecture
+- [[quickshell/README]] - Services layer overview
+- [[state/STATECHART]] - How IPC events trigger state changes

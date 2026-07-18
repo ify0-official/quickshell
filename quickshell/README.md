@@ -87,8 +87,8 @@ import "stores"                  // Relative import for ThemeStore
 4. **iOS Dynamic Island Styling**: All visual components follow the design language defined in ThemeStore
 
 ## Related Documentation
-- [../ARCHITECTURE.md](../ARCHITECTURE.md) - System architecture overview
-- [../MEMORY.md](../MEMORY.md) - Long-term project knowledge
-- [../CONTEXT.md](../CONTEXT.md) - Current session context
-- [../CONVENTION.md](../CONVENTION.md) - Coding standards
-- [state/STATECHART.md](state/STATECHART.md) - State machine details
+- [[ARCHITECTURE]] - System architecture overview
+- [[ai/MEMORY]] - Long-term project knowledge
+- [[ai/CONTEXT]] - Current session context
+- [[CONVENTION]] - Coding standards
+- [[state/STATECHART]] - State machine details

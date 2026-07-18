@@ -240,4 +240,4 @@ quickshell/
 
 ---
 
-> **Next Step:** Review [SOLUTIONS.md](SOLUTIONS.md) for implementation approaches to these suggestions.
+> **Next Step:** Review [[SOLUTIONS]] for implementation approaches to these suggestions.

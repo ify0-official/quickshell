@@ -205,8 +205,8 @@ function canTransitionTo(newState) {
 
 ## Related Documentation
 
-- [../../ARCHITECTURE.md](../../ARCHITECTURE.md) - System architecture
-- [../README.md](../README.md) - State layer overview
-- [../STATECHART.md](../STATECHART.md) - Detailed state transition diagrams
+- [[ARCHITECTURE]] - System architecture
+- [[quickshell/README]] - State layer overview
+- [[STATECHART]] - Detailed state transition diagrams
 - [../StateRegistry.qml](../StateRegistry.qml) - Transition coordinator
-- [../../MEMORY.md](../../MEMORY.md) - HSM implementation patterns
+- [[ai/MEMORY]] - HSM implementation patterns

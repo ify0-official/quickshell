@@ -183,8 +183,8 @@ Planned additions to this directory:
 
 ## Related Documentation
 
-- [../../ARCHITECTURE.md](../../ARCHITECTURE.md) - System architecture
-- [../README.md](../README.md) - State layer overview
-- [../STATECHART.md](../STATECHART.md) - Content selection logic
+- [[ARCHITECTURE]] - System architecture
+- [[quickshell/README]] - State layer overview
+- [[STATECHART]] - Content selection logic
 - [../projections/](../projections/) - Visual representations
-- [../../MEMORY.md](../../MEMORY.md) - Content implementation patterns
+- [[ai/MEMORY]] - Content implementation patterns

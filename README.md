@@ -29,7 +29,7 @@ Each state displays different **content types** (battery, volume, notifications,
 
 ## Architecture
 
-For detailed architecture documentation, see [ARCHITECTURE.md](ARCHITECTURE.md).
+For detailed architecture documentation, see [[ARCHITECTURE]].
 
 ### Core Concept
 
@@ -124,13 +124,13 @@ quickshell/
 
 | File | Purpose |
 |------|---------|
-| [README.md](README.md) | This file - quick start and overview |
-| [ARCHITECTURE.md](ARCHITECTURE.md) | Detailed system architecture and patterns |
-| [CONVENTION.md](CONVENTION.md) | Coding standards and best practices |
-| [ai/MEMORY.md](ai/MEMORY.md) | Long-term project knowledge |
-| [STATECHART.md](state/STATECHART.md) | Hierarchical State Machine documentation |
-| [ai/CONTEXT.md](ai/CONTEXT.md) | Current session context |
-| [ai/INSTRUCTION.md](ai/INSTRUCTION.md) | Development guidelines |
+| [[README]] | This file - quick start and overview |
+| [[ARCHITECTURE]] | Detailed system architecture and patterns |
+| [[CONVENTION]] | Coding standards and best practices |
+| [[ai/MEMORY]] | Long-term project knowledge |
+| [[state/STATECHART]] | Hierarchical State Machine documentation |
+| [[ai/CONTEXT]] | Current session context |
+| [[ai/INSTRUCTION]] | Development guidelines |
 
 ---
 
@@ -215,7 +215,7 @@ qmlformat --inplace ../quickshell/
 
 ### Code Style
 
-All code follows strict conventions defined in [CONVENTION.md](CONVENTION.md):
+All code follows strict conventions defined in [[CONVENTION]]:
 - PascalCase for components
 - 9-section component structure
 - No hardcoded colors/sizes (use ThemeStore)
@@ -289,9 +289,9 @@ export QML_DEBUGGER_ENABLED=1
 
 ## Contributing
 
-1. Review [CONVENTION.md](CONVENTION.md) for coding standards
-2. Check [ai/MEMORY.md](ai/MEMORY.md) for architectural decisions
-3. Update [ai/CONTEXT.md](ai/CONTEXT.md) with session progress
+1. Review [[CONVENTION]] for coding standards
+2. Check [[ai/MEMORY]] for architectural decisions
+3. Update [[ai/CONTEXT]] with session progress
 4. Add tests for new features (90% coverage target)
 
 ---
