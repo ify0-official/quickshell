@@ -2,7 +2,7 @@
 
 > **Purpose:** Long-term project memory for the Quickshell project. This file persists across sessions and contains essential information about the project architecture, patterns, decisions, and knowledge that future developers (or AI assistants) need to understand.
 
-> **Last Updated:** 2025-07-18 - Added comprehensive directory documentation, created meetingCompact.qml, enhanced ThemeStore comments
+> **Last Updated:** 2025-07-18 - Added comprehensive directory documentation, enhanced ThemeStore comments
 
 ---
 
