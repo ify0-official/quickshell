@@ -1,54 +1,69 @@
 ```
-# Compiled and build artifacts
-*.pyc
-__pycache__/
+#Compiled and build artifacts
 *.qmlc
 *.jsc
+*.jscompilation
+*.compiled
+*.build
+*.bin
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
 
-# Dependencies
+#Dependencies
 node_modules/
-venv/
-.venv/
-.julia/
-.zig-cache/
+.qmake.stash
+Makefile
+*.pro.user
+*.pri.user
+*.prf
+*.prl
+*.la
+.libs/
 
-# Logs and temp files
-*.log
+#Qt/QML specific
+*.moc
+*.moc.cpp
+*.ui.h
+*.qrc.depends
+*.qrc.o
+*.qm
+*.rcc
+*.ts
+
+#Build directories
+build/
+dist/
+release/
+debug/
+*.app/
+*.exe
+*.dmg
+*.msi
+
+#Temp files
 *.tmp
+*.temp
+*.log
 *.swp
-*.swo
+*~
 
-# Environment
-.env
-.env.local
-*.env.*
-
-# Editors
+#Editor files
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# OS generated files
+#System files
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Build outputs
-dist/
-build/
-target/
-*.exe
-*.dll
-*.so
-*.a
-*.out
-
-# Coverage reports
-coverage/
-htmlcov/
-.coverage
-
-# Testing
-.mypy_cache/
-.pytest_cache/
+#Environment
+.env
+.env.local
+*.env.*
+.env~
 ```
