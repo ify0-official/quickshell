@@ -1,51 +1,95 @@
-// BatteryMinimal.qml - Battery minimal projection
+// BatteryMinimal.qml - Battery minimal projection for Dynamic Island
 import QtQuick
-import "../stores"
+import "stores"
 
 Item {
     id: root
     objectName: "batteryMinimal"
 
-    implicitWidth: 40
-    implicitHeight: 20
+    implicitWidth: 44
+    implicitHeight: 24
     
-    // Reference to theme store
-    property var theme: null
+    property var theme: ThemeStore {}
     
     property int batteryLevel: 100
     property bool isCharging: false
-
-    Component.onCompleted: {
-        root.theme = Qt.createQmlObject(`
-            import QtQuick
-            import "../stores"
-            ThemeStore {}
-        `, root);
-        console.log("BatteryMinimal initialized");
-    }
+    
+    readonly property color indicatorColor: root.batteryLevel < 20 ? theme.errorColor : (root.isCharging ? theme.successColor : theme.textColor)
+    readonly property real fillWidth: Math.max(4, (root.batteryLevel / 100) * (parent.width - 8))
 
     Rectangle {
+        id: container
         anchors.fill: parent
-        color: root.theme ? root.theme.surfaceColor : "#333333"
-        radius: root.theme ? root.theme.radiusSm : 2
-
-        Rectangle {
-            id: fillIndicator
-            anchors.left: parent.left
-            anchors.verticalCenter: parent.verticalCenter
-            height: parent.height - 4
-            width: (root.batteryLevel / 100) * (parent.width - 4)
-            color: root.batteryLevel < 20 ? (root.theme ? root.theme.errorColor : "#f44336") : (root.theme ? root.theme.successColor : "#4caf50")
-            radius: 1
+        color: theme.islandSurface
+        radius: theme.radiusFull
+        
+        Row {
+            anchors.centerIn: parent
+            spacing: theme.spacingXs
+            
+            Rectangle {
+                id: batteryBody
+                width: 28
+                height: 14
+                color: "transparent"
+                border.color: theme.borderColor
+                border.width: 1.5
+                radius: theme.radiusXs
+                
+                Rectangle {
+                    id: fillIndicator
+                    anchors.left: parent.left
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.leftMargin: 2
+                    height: parent.height - 4
+                    width: root.fillWidth
+                    color: root.indicatorColor
+                    radius: theme.radiusXs
+                    
+                    Behavior on width {
+                        NumberAnimation {
+                            duration: theme.durationFast
+                            easing.type: Easing.OutQuad
+                        }
+                    }
+                    
+                    Behavior on color {
+                        ColorAnimation {
+                            duration: theme.durationFast
+                        }
+                    }
+                }
+            }
+            
+            Rectangle {
+                id: chargingPort
+                anchors.verticalCenter: parent.verticalCenter
+                width: 3
+                height: 6
+                color: theme.borderColor
+                radius: 1
+                
+                visible: root.isCharging
+            }
+            
+            Text {
+                anchors.verticalCenter: parent.verticalCenter
+                text: root.batteryLevel + "%"
+                color: theme.textColor
+                font.pixelSize: theme.fontSizeXs
+                font.weight: theme.fontWeightMedium
+                visible: !root.isCharging
+            }
         }
-
-        Rectangle {
-            anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
-            width: 3
-            height: 8
-            color: root.theme ? root.theme.borderColor : "#666666"
-            radius: 1
+        
+        states: State {
+            name: "charging"
+            when: root.isCharging
+            
+            PropertyChanges {
+                target: chargingPort
+                color: theme.successColor
+            }
         }
     }
 }

@@ -1,12 +1,15 @@
-// workspaceMinimal.qml - Workspace minimal projection
+// workspaceMinimal.qml - Workspace minimal projection for Dynamic Island
 import QtQuick
+import "stores"
 
 Item {
     id: root
     objectName: "workspaceMinimal"
 
-    implicitWidth: 100
-    implicitHeight: 30
+    implicitWidth: 120
+    implicitHeight: 36
+    
+    property var theme: ThemeStore {}
 
     signal workspaceChanged(int index)
 
@@ -14,41 +17,64 @@ Item {
     property int workspaceCount: 4
 
     Rectangle {
+        id: container
         anchors.fill: parent
-        color: "#333333"
-        radius: 4
-
+        color: theme.islandSurface
+        radius: theme.radiusFull
+        
         Row {
             anchors.centerIn: parent
-            spacing: 4
-
+            spacing: theme.spacingXs
+            
             Repeater {
                 model: root.workspaceCount
-
+                
                 delegate: Rectangle {
-                    width: 20
-                    height: 20
-                    color: index + 1 === root.currentWorkspace ? "#4caf50" : "#555555"
-                    radius: 2
-
+                    id: workspaceDot
+                    width: 24
+                    height: 24
+                    color: index + 1 === root.currentWorkspace ? theme.successColor : theme.surfaceLight
+                    radius: theme.radiusFull
+                    
+                    Behavior on color {
+                        ColorAnimation {
+                            duration: theme.durationFast
+                        }
+                    }
+                    
+                    Behavior on scale {
+                        NumberAnimation {
+                            duration: theme.durationFast
+                            easing.type: Easing.OutBack
+                        }
+                    }
+                    
                     Text {
                         anchors.centerIn: parent
                         text: (index + 1).toString()
-                        color: "#ffffff"
-                        font.pixelSize: 10
+                        color: theme.textColor
+                        font.pixelSize: theme.fontSizeXs
+                        font.weight: index + 1 === root.currentWorkspace ? theme.fontWeightSemiBold : theme.fontWeightRegular
                     }
-
+                    
                     MouseArea {
                         anchors.fill: parent
+                        hoverEnabled: true
+                        
                         onClicked: root.workspaceChanged(index + 1)
+                        
+                        onEntered: {
+                            if (index + 1 !== root.currentWorkspace) {
+                                workspaceDot.scale = 1.1;
+                            }
+                        }
+                        
+                        onExited: {
+                            workspaceDot.scale = 1.0;
+                        }
                     }
                 }
             }
         }
     }
-
-    Component.onCompleted: {
-        console.log("workspaceMinimal initialized");
-    }
-
 }
