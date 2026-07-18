@@ -1,5 +1,6 @@
 // shell.qml - Entry point for Quickshell
 import QtQuick
+import QtQuick.Window
 import Quickshell
 
 Item {
@@ -25,15 +26,16 @@ Item {
     property var compactState: null
     property var expandedState: null
 
-    // === Dynamic Island Bar as PopupWindow ===
-    PopupWindow {
-        id: islandPopup
+    // === Dynamic Island Bar as Floating Window ===
+    Window {
+        id: islandWindow
         title: "Dynamic Island"
         visible: true
         flags: Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint | Qt.Tool
         
         // Position at top center of screen
-        position: Qt.point((Screen.width - width) / 2, 10)
+        x: (Screen.width - width) / 2
+        y: 10
         
         // Dynamic size based on state
         width: currentStateWidth
