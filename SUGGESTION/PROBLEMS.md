@@ -395,6 +395,175 @@ EFFORT│  Missing Files    │  NetworkManager   │   EFFORT
 
 ---
 
+## 6. Design Pattern Problems
+
+### 6.1 Factory Pattern
+
+#### Drawbacks
+
+| Problem | Impact Weight | Improvement Gain | Net Value |
+|---------|---------------|------------------|-----------|
+| Added abstraction layer | High (7/10) | Dynamic loading | -2 |
+| Debugging difficulty | Medium (6/10) | Flexibility | -1 |
+| Performance overhead | Low (4/10) | Caching benefits | +1 |
+| Learning curve | Medium (5/10) | Clean architecture | 0 |
+
+**Detailed Analysis:**
+
+1. **Abstraction Complexity**
+   - **Problem:** Indirect object creation harder to understand
+   - **Impact:** New developers struggle with flow
+   - **Mitigation:** Extensive documentation, code examples
+
+2. **Type Safety Loss**
+   - **Problem:** Dynamic QML object creation loses compile-time checks
+   - **Risk:** Runtime errors instead of compile-time errors
+   - **Mitigation:** Add runtime validation, comprehensive tests
+
+**Recommendation:** Defer until performance issues arise. Current approach works well.
+
+---
+
+### 6.2 Command Pattern
+
+#### Drawbacks
+
+| Problem | Impact Weight | Improvement Gain | Net Value |
+|---------|---------------|------------------|-----------|
+| Increased object count | Medium (5/10) | Undo/redo capability | +2 |
+| Command management overhead | Low (3/10) | Transactional changes | +3 |
+| Memory for command history | Low (3/10) | Debugging support | +4 |
+
+**Detailed Analysis:**
+
+1. **Object Proliferation**
+   - **Problem:** Each transition type needs a command class
+   - **Estimated:** 6-10 command classes for all transitions
+   - **Mitigation:** Use command templates, generic command with parameters
+
+2. **History Management**
+   - **Problem:** Unlimited history can consume memory
+   - **Mitigation:** Implement history limits, cleanup old commands
+
+**Recommendation:** Low risk, good value for complex state management scenarios.
+
+---
+
+### 6.3 Mediator Pattern Enhancement
+
+#### Drawbacks
+
+| Problem | Impact Weight | Improvement Gain | Net Value |
+|---------|---------------|------------------|-----------|
+| Central bottleneck risk | Medium (5/10) | Reduced coupling | +2 |
+| Mediator complexity growth | Medium (6/10) | Centralized logic | -1 |
+| Single point of failure | High (7/10) | Easier testing | -2 |
+
+**Detailed Analysis:**
+
+1. **Mediator Bloat**
+   - **Problem:** StateRegistry could become too large
+   - **Risk:** Violates single responsibility principle
+   - **Mitigation:** Extract sub-mediators for specific domains
+
+2. **Performance Bottleneck**
+   - **Problem:** All communication flows through one component
+   - **Mitigation:** Keep mediation logic simple, use direct communication where appropriate
+
+**Recommendation:** Already partially implemented. Formalize gradually.
+
+---
+
+### 6.4 Flyweight Pattern
+
+#### Drawbacks
+
+| Problem | Impact Weight | Improvement Gain | Net Value |
+|---------|---------------|------------------|-----------|
+| Shared state complexity | Low (4/10) | Memory efficiency | +3 |
+| Store dependency coupling | Medium (5/10) | Consistent styling | +1 |
+| Initialization order issues | Low (3/10) | Reduced footprint | +4 |
+
+**Detailed Analysis:**
+
+1. **Store Dependencies**
+   - **Problem:** All projections depend on AnimationStore/ThemeStore
+   - **Risk:** Store changes affect all projections
+   - **Mitigation:** Stable store APIs, version stores
+
+2. **Singleton Lifecycle**
+   - **Problem:** Stores must initialize before projections
+   - **Mitigation:** Use pragma Singleton, ensure load order
+
+**Recommendation:** Low risk, high value. Implement with AnimationStore.
+
+---
+
+### 6.5 Chain of Responsibility Pattern
+
+#### Drawbacks
+
+| Problem | Impact Weight | Improvement Gain | Net Value |
+|---------|---------------|------------------|-----------|
+| Chain setup complexity | Medium (5/10) | Flexible processing | +1 |
+| Debugging chain flow | Medium (6/10) | Easy handler addition | -1 |
+| Handler ordering sensitivity | High (7/10) | Priority-based handling | -2 |
+
+**Detailed Analysis:**
+
+1. **Chain Configuration**
+   - **Problem:** Must carefully order handlers
+   - **Risk:** Wrong order causes incorrect behavior
+   - **Mitigation:** Document required order, validate chain setup
+
+2. **Silent Failures**
+   - **Problem:** Request may pass through entire chain unhandled
+   - **Risk:** No error if no handler matches
+   - **Mitigation:** Add default handler, log unhandled requests
+
+**Recommendation:** Medium risk. Implement only if priority handling becomes complex.
+
+---
+
+## 6. Risk Ranking Summary
+
+### Overall Priority Matrix
+
+| Suggestion | Total Risk Score | Total Benefit Score | Recommendation |
+|------------|-----------------|--------------------|----------------|
+| **Naming Standardization** | 26/40 | High | ✅ Do First (P0) |
+| **STATECHART Completion** | 8/20 | High | ✅ Do First (P0) |
+| **Missing Files (CHANGELOG, etc.)** | 7/20 | High | ✅ Do Immediately (P0) |
+| **AnimationStore (Flyweight)** | 12/30 | Medium | ✅ Do Soon (P1) |
+| **NetworkManager** | 17/30 | Medium | ⏳ Plan Carefully (P1) |
+| **Factory Pattern** | 22/40 | Medium | ❌ Defer Indefinitely (P3) |
+| **Command Pattern** | 11/30 | Medium | ⏳ When Time Permits (P2) |
+| **Mediator Enhancement** | 18/30 | Low | ⏳ Evaluate Need (P2) |
+| **Chain of Responsibility** | 18/30 | Medium | ❌ Defer Unless Needed (P3) |
+| **FocusState** | 26/40 | Low | ⚠️ Evaluate Need (P2) |
+| **Directory Restructure** | 25/40 | Medium | ❌ Only If Necessary (P3) |
+
+### Risk Categories
+
+**Low Risk (Score < 15):**
+- Missing file creation
+- STATECHART completion
+- AnimationStore implementation (Flyweight)
+- Command Pattern
+
+**Medium Risk (Score 15-25):**
+- Naming standardization
+- NetworkManager implementation
+- Mediator enhancement
+- Chain of Responsibility
+
+**High Risk (Score > 25):**
+- Directory restructuring
+- Additional state modes
+- Factory pattern (complexity)
+
+---
+
 ## Final Recommendations
 
 ### Immediate Actions (Week 1)
@@ -403,19 +572,20 @@ EFFORT│  Missing Files    │  NetworkManager   │   EFFORT
 3. ✅ Standardize projection file naming
 
 ### Short-Term (Month 1)
-4. ✅ Implement AnimationStore
+4. ✅ Implement AnimationStore (provides Flyweight benefits)
 5. ⏳ Plan NetworkManager implementation
 6. ⏳ Set up documentation CI checks
 
 ### Medium-Term (Quarter 1)
 7. ⚠️ Evaluate actual need for FocusState
-8. ⏳ Generate API reference documentation
-9. ❌ Defer directory restructuring unless causing issues
+8. ⏳ Consider Command Pattern if undo/redo needed
+9. ⏳ Formalize Mediator pattern in StateRegistry
+10. ❌ Defer Factory Pattern until performance requires it
+11. ❌ Defer Chain of Responsibility unless priority handling becomes complex
 
 ### Avoid Unless Critical
-10. ❌ Projection factory pattern (adds complexity without clear benefit)
-11. ❌ Additional state modes (unless user research demands)
 12. ❌ Major directory reorganization (evolution over revolution)
+13. ❌ Additional state modes (unless user research demands)
 
 ---
 

@@ -112,12 +112,37 @@ All Compact and Expanded projections have been successfully updated to match the
 
 ---
 
+## 🏗️ Design Pattern Recommendations
+
+**Why:** Applying established GoF design patterns will improve code maintainability, flexibility, and extensibility.
+
+**Current Patterns in Use:**
+- **Singleton Pattern:** `SessionStore.qml`, `ThemeStore`, `PowerManager`, `BackendSocket`
+- **State Pattern:** State machines (`MinimalState`, `CompactState`, `ExpandedState`) + `StateRegistry.qml`
+- **Facade Pattern:** `StateRegistry.qml` provides simplified interface to state machine subsystem
+- **Strategy Pattern:** Projection variants (`*Minimal.qml`, `*Compact.qml`, `*Expanded.qml`) as interchangeable strategies
+- **Observer Pattern:** QML signals/slots throughout the codebase
+- **Template Method Pattern:** State machines with `enter()` and `exit()` methods
+
+**Recommended Patterns to Implement:**
+- **Factory Pattern:** Centralize object creation currently done manually in `shell.qml`
+- **Command Pattern:** Encapsulate state transitions as command objects
+- **Mediator Pattern:** Make `StateRegistry`'s mediator role more explicit
+- **Flyweight Pattern:** Share common theme data across multiple projection instances
+- **Chain of Responsibility Pattern:** Implement priority-based event handling chain
+
+👉 **Implementation Guide:** See [Step 2](#immediate-next-steps) to navigate to the `SUGGESTION/` folder where detailed implementation instructions are provided.
+
+---
+
 ## Immediate Next Steps
 
-1. **Test on Hyprland:** Launch Quickshell and verify all projections render correctly
-2. **Check scaling:** Ensure UI is properly scaled on your display
-3. **Verify animations:** Confirm smooth transitions between states
-4. **Report any Wayland-specific issues:** Blur, transparency, positioning
+1. **Go to SUGGESTION folder:** Navigate to `/workspace/SUGGESTION/`
+2. **Follow the README.md:** Read and follow the instructions in `SUGGESTION/README.md`
+3. **Test on Hyprland:** Launch Quickshell and verify all projections render correctly
+4. **Check scaling:** Ensure UI is properly scaled on your display
+5. **Verify animations:** Confirm smooth transitions between states
+6. **Report any Wayland-specific issues:** Blur, transparency, positioning
 
 ---
 

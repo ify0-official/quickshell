@@ -596,6 +596,393 @@ jobs:
 
 ---
 
+## 6. Design Pattern Solutions
+
+### 6.1 Factory Pattern Implementation
+
+#### Solution: ProjectionFactory Component
+
+**Implementation Steps:**
+
+1. Create factory component:
+```qml
+// state/ProjectionFactory.qml
+QtObject {
+    id: root
+    
+    property var loadedProjections: ({})
+    property var projectionCache: ({})
+    
+    function getProjection(contentType, stateMode) {
+        const key = contentType + "_" + stateMode;
+        
+        if (root.projectionCache[key]) {
+            return root.projectionCache[key];
+        }
+        
+        const source = resolveProjectionSource(contentType, stateMode);
+        const projection = Qt.createQmlObject(source, parent);
+        root.projectionCache[key] = projection;
+        
+        return projection;
+    }
+    
+    function preloadProjection(contentType, stateMode) {
+        // Pre-load projection without displaying
+        getProjection(contentType, stateMode);
+    }
+    
+    function resolveProjectionSource(contentType, stateMode) {
+        // Map content types and states to QML file paths
+        const mapping = {
+            "battery": {
+                "minimal": "BatteryMinimal.qml",
+                "compact": "BatteryCompact.qml",
+                "expanded": "BatteryExpanded.qml"
+            }
+            // ... other mappings
+        };
+        return mapping[contentType][stateMode];
+    }
+}
+```
+
+**Estimated Effort:** 3-4 days
+**Dependencies:** None
+**Risk Level:** Medium (complexity increase)
+
+### 6.2 Command Pattern Implementation
+
+#### Solution: State Transition Commands
+
+**Implementation Steps:**
+
+1. Create command base class:
+```qml
+// state/commands/StateCommand.qml
+QtObject {
+    id: root
+    
+    signal executed()
+    signal undone()
+    
+    property bool canExecute: true
+    property bool canUndo: false
+    
+    function execute() {
+        console.log("Executing command");
+        root.executed();
+    }
+    
+    function undo() {
+        if (root.canUndo) {
+            console.log("Undoing command");
+            root.undone();
+        }
+    }
+}
+```
+
+2. Create concrete command for state transitions:
+```qml
+// state/commands/TransitionToCompactCommand.qml
+StateCommand {
+    id: root
+    
+    property var fromState: null
+    property var toState: null
+    
+    function execute() {
+        if (!root.canExecute) return;
+        
+        // Save previous state for undo
+        var previousState = fromState;
+        
+        // Execute transition
+        fromState.exit();
+        toState.enter();
+        
+        root.executed();
+    }
+    
+    function undo() {
+        toState.exit();
+        fromState.enter();
+        root.undone();
+    }
+}
+```
+
+3. Create command manager:
+```qml
+// state/CommandManager.qml
+QtObject {
+    id: root
+    
+    property var commandHistory: []
+    property int historyIndex: -1
+    
+    function executeCommand(command) {
+        // Remove any future commands if we're not at the end
+        if (root.historyIndex < root.commandHistory.length - 1) {
+            root.commandHistory = root.commandHistory.slice(0, root.historyIndex + 1);
+        }
+        
+        command.execute();
+        root.commandHistory.push(command);
+        root.historyIndex++;
+    }
+    
+    function undo() {
+        if (root.historyIndex >= 0) {
+            root.commandHistory[root.historyIndex].undo();
+            root.historyIndex--;
+        }
+    }
+    
+    function redo() {
+        if (root.historyIndex < root.commandHistory.length - 1) {
+            root.historyIndex++;
+            root.commandHistory[root.historyIndex].execute();
+        }
+    }
+}
+```
+
+**Estimated Effort:** 2-3 days
+**Dependencies:** None
+**Risk Level:** Low
+
+### 6.3 Mediator Pattern Enhancement
+
+#### Solution: Formalize StateRegistry as Mediator
+
+**Implementation Steps:**
+
+1. Define mediator interface in StateRegistry:
+```qml
+// state/StateRegistry.qml (enhanced)
+QtObject {
+    id: root
+    objectName: "stateMediator"
+    
+    // === Mediator Interface ===
+    
+    function notifyComponentEvent(componentId, eventType, data) {
+        // Centralized event routing
+        switch(eventType) {
+            case "stateRequest":
+                handleStateRequest(componentId, data);
+                break;
+            case "contentUpdate":
+                broadcastContentUpdate(componentId, data);
+                break;
+        }
+    }
+    
+    function registerComponent(componentId, component) {
+        // Register component for mediated communication
+        registeredComponents[componentId] = component;
+    }
+    
+    function unregisterComponent(componentId) {
+        delete registeredComponents[componentId];
+    }
+    
+    // === Internal Mediation Logic ===
+    
+    function handleStateRequest(requesterId, targetState) {
+        // Validate and route state transition requests
+        if (canTransition(root.currentState, targetState)) {
+            transitionTo(targetState);
+        }
+    }
+    
+    function broadcastContentUpdate(sourceId, updateData) {
+        // Notify all interested components of content changes
+        for (var id in registeredComponents) {
+            if (id !== sourceId && registeredComponents[id].onContentUpdate) {
+                registeredComponents[id].onContentUpdate(updateData);
+            }
+        }
+    }
+}
+```
+
+**Estimated Effort:** 1-2 days
+**Dependencies:** None
+**Risk Level:** Low
+
+### 6.4 Flyweight Pattern Implementation
+
+#### Solution: Shared Intrinsic State
+
+**Implementation Steps:**
+
+1. Create AnimationStore (already suggested in Architecture):
+```qml
+// state/stores/AnimationStore.qml
+pragma Singleton
+import QtQuick
+
+QtObject {
+    // Shared animation configurations (intrinsic state)
+    readonly property real springStiffness: 400
+    readonly property real springDamping: 15
+    readonly property real springMass: 1
+    
+    readonly property int durationInstant: 100
+    readonly property int durationFast: 200
+    readonly property int durationNormal: 350
+    readonly property int durationSlow: 500
+    
+    // Factory methods for shared animations
+    function createFadeAnimation(parent) {
+        return Qt.createQmlObject(`
+            import QtQuick
+            NumberAnimation {
+                property: "opacity"
+                duration: ${durationNormal}
+                easing.type: Easing.OutQuad
+            }
+        `, parent);
+    }
+}
+```
+
+2. Update projections to use shared state:
+```qml
+// Example projection using flyweight
+QtObject {
+    id: root
+    
+    // Extrinsic state (unique to this instance)
+    property real opacityValue: 0.0
+    
+    // Intrinsic state (shared via stores)
+    readonly property int animationDuration: AnimationStore.durationNormal
+    readonly property real springStiffness: AnimationStore.springStiffness
+    
+    // Use shared animation factory
+    PropertyAnimation {
+        target: root
+        property: "opacityValue"
+        duration: AnimationStore.durationNormal
+        easing.type: AnimationStore.easeOutQuad
+    }
+}
+```
+
+**Estimated Effort:** 1-2 days (overlaps with AnimationStore implementation)
+**Dependencies:** None
+**Risk Level:** Low
+
+### 6.5 Chain of Responsibility Pattern Implementation
+
+#### Solution: Priority Event Handler Chain
+
+**Implementation Steps:**
+
+1. Create handler base class:
+```qml
+// state/content/handlers/ContentHandler.qml
+QtObject {
+    id: root
+    
+    property var nextHandler: null
+    property int priority: 0
+    
+    function handleRequest(contentData) {
+        if (canHandle(contentData)) {
+            processContent(contentData);
+        } else if (root.nextHandler) {
+            root.nextHandler.handleRequest(contentData);
+        }
+    }
+    
+    function canHandle(contentData) {
+        // Override in subclasses
+        return false;
+    }
+    
+    function processContent(contentData) {
+        // Override in subclasses
+        console.log("Processing content:", contentData);
+    }
+}
+```
+
+2. Create concrete handlers:
+```qml
+// state/content/handlers/CriticalContentHandler.qml
+ContentHandler {
+    id: root
+    priority: 4  // Critical priority
+    
+    function canHandle(contentData) {
+        return contentData.priority === "critical";
+    }
+    
+    function processContent(contentData) {
+        // Handle critical content immediately
+        console.log("Critical content:", contentData);
+        displayImmediately(contentData);
+    }
+}
+
+// state/content/handlers/NormalContentHandler.qml
+ContentHandler {
+    id: root
+    priority: 2  // Normal priority
+    
+    function canHandle(contentData) {
+        return contentData.priority === "normal";
+    }
+    
+    function processContent(contentData) {
+        // Handle normal content with standard display
+        console.log("Normal content:", contentData);
+        displayNormally(contentData);
+    }
+}
+```
+
+3. Build the chain in PriorityManager:
+```qml
+// state/content/PriorityManager.qml (enhanced)
+QtObject {
+    id: root
+    
+    property var handlerChain: null
+    
+    Component.onCompleted: {
+        // Build chain: Critical -> High -> Medium -> Low -> None
+        var criticalHandler = Qt.createQmlObject("CriticalContentHandler.qml", root);
+        var highHandler = Qt.createQmlObject("HighContentHandler.qml", root);
+        var mediumHandler = Qt.createQmlObject("MediumContentHandler.qml", root);
+        var lowHandler = Qt.createQmlObject("LowContentHandler.qml", root);
+        
+        criticalHandler.nextHandler = highHandler;
+        highHandler.nextHandler = mediumHandler;
+        mediumHandler.nextHandler = lowHandler;
+        
+        root.handlerChain = criticalHandler;
+    }
+    
+    function processContent(contentData) {
+        if (root.handlerChain) {
+            root.handlerChain.handleRequest(contentData);
+        }
+    }
+}
+```
+
+**Estimated Effort:** 2-3 days
+**Dependencies:** None
+**Risk Level:** Low-Medium
+
+---
+
 ## Implementation Priority Matrix
 
 | Solution | Impact | Effort | Risk | Priority |
@@ -603,9 +990,12 @@ jobs:
 | Naming Standardization | High | Low | Low | P0 |
 | STATECHART Completion | High | Low | None | P0 |
 | NetworkManager | Medium | Medium | Low | P1 |
-| AnimationStore | Medium | Low | Low | P1 |
+| AnimationStore (Flyweight) | Medium | Low | Low | P1 |
+| Factory Pattern | Medium | Medium | Medium | P2 |
+| Command Pattern | Medium | Medium | Low | P2 |
+| Mediator Enhancement | Low | Low | Low | P2 |
+| Chain of Responsibility | Medium | Medium | Low-Medium | P3 |
 | FocusState | Low | Medium | Low | P2 |
-| Projection Factory | Medium | High | Medium | P2 |
 | Directory Restructure | Medium | High | Medium | P3 |
 
 ---
