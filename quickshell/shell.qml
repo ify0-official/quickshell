@@ -27,39 +27,39 @@ Item {
         // Initialize stores
         root.themeStore = Qt.createQmlObject(`
             import QtQuick
-            import "../state/stores"
+            import Quickshell
             ThemeStore {}
         `, root);
         
         root.sessionStore = Qt.createQmlObject(`
             import QtQuick
-            import "../state/stores"
+            import Quickshell
             SessionStore {}
         `, root);
         
         // Initialize state machines
         root.minimalState = Qt.createQmlObject(`
             import QtQuick
-            import "../state/machines"
+            import Quickshell
             MinimalState {}
         `, root);
         
         root.compactState = Qt.createQmlObject(`
             import QtQuick
-            import "../state/machines"
+            import Quickshell
             CompactState {}
         `, root);
         
         root.expandedState = Qt.createQmlObject(`
             import QtQuick
-            import "../state/machines"
+            import Quickshell
             ExpandedState {}
         `, root);
         
         // Initialize state registry
         root.stateRegistry = Qt.createQmlObject(`
             import QtQuick
-            import ".."
+            import Quickshell
             StateRegistry {}
         `, root);
         
