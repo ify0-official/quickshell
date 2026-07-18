@@ -1,12 +1,15 @@
-// TimerCompact.qml - Timer compact projection
+// TimerCompact.qml - Timer compact projection for iOS Dynamic Island
 import QtQuick
+import "stores"
 
 Item {
     id: root
     objectName: "timerCompact"
 
-    implicitWidth: 200
+    implicitWidth: 220
     implicitHeight: 80
+    
+    property var theme: ThemeStore {}
 
     signal startRequested()
     signal stopRequested()
@@ -15,74 +18,130 @@ Item {
     property int remainingTime: 0
     property int duration: 60
     property bool isRunning: false
+    
+    readonly property color timerColor: root.remainingTime < 10 ? theme.errorColor : (root.remainingTime < 30 ? theme.warningColor : theme.successColor)
+    readonly property real progress: root.duration > 0 ? root.remainingTime / root.duration : 0
 
     Rectangle {
+        id: container
         anchors.fill: parent
-        color: "#333333"
-        radius: 8
+        color: theme.islandSurface
+        radius: theme.radiusLg
+        clip: true
 
-        Column {
+        Row {
             anchors.centerIn: parent
-            spacing: 8
+            spacing: theme.spacingLg
 
-            Text {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: formatTime(root.remainingTime)
-                color: "#ffffff"
-                font.pixelSize: 24
+            // Time Display with Progress Arc
+            Item {
+                width: 56
+                height: 56
+
+                Canvas {
+                    id: progressArc
+                    anchors.fill: parent
+                    
+                    onPaint: {
+                        var ctx = getContext("2d");
+                        ctx.reset();
+                        ctx.strokeStyle = root.timerColor;
+                        ctx.lineWidth = 3;
+                        ctx.lineCap = "round";
+
+                        var startAngle = -Math.PI / 2;
+                        var endAngle = startAngle + (2 * Math.PI * root.progress);
+                        
+                        ctx.beginPath();
+                        ctx.arc(width / 2, height / 2, width / 2 - 2, startAngle, endAngle);
+                        ctx.stroke();
+                    }
+                }
+
+                Text {
+                    anchors.centerIn: parent
+                    text: formatTime(root.remainingTime)
+                    color: theme.textColor
+                    font.pixelSize: theme.fontSizeSm
+                    font.weight: theme.fontWeightSemiBold
+                }
             }
 
-            Row {
-                anchors.horizontalCenter: parent.horizontalCenter
-                spacing: 8
+            // Controls
+            Column {
+                spacing: theme.spacingXs
 
-                Rectangle {
-                    width: 50
-                    height: 24
-                    color: root.isRunning ? "#f44336" : "#4caf50"
-                    radius: 4
+                Row {
+                    spacing: theme.spacingSm
 
-                    Text {
-                        anchors.centerIn: parent
-                        text: root.isRunning ? "Stop" : "Start"
-                        color: "#ffffff"
+                    // Start/Stop Button
+                    Rectangle {
+                        width: 64
+                        height: 28
+                        color: root.isRunning ? theme.errorColor : theme.successColor
+                        radius: theme.radiusFull
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: root.isRunning ? "Stop" : "Start"
+                            color: theme.textColor
+                            font.pixelSize: theme.fontSizeXs
+                            font.weight: theme.fontWeightMedium
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: root.isRunning ? root.stopRequested() : root.startRequested()
+                        }
+
+                        Behavior on color {
+                            ColorAnimation {
+                                duration: theme.durationFast
+                            }
+                        }
                     }
 
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            if (root.isRunning) {
-                                root.stopRequested();
-                            } else {
-                                root.startRequested();
-                            }
+                    // Reset Button
+                    Rectangle {
+                        width: 50
+                        height: 28
+                        color: theme.infoColor
+                        radius: theme.radiusFull
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: "Reset"
+                            color: theme.textColor
+                            font.pixelSize: theme.fontSizeXs
+                            font.weight: theme.fontWeightMedium
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: root.resetRequested()
                         }
                     }
                 }
 
+                // Status Indicator
                 Rectangle {
-                    width: 50
-                    height: 24
-                    color: "#2196f3"
-                    radius: 4
+                    width: statusText.width + theme.spacingSm * 2
+                    height: 18
+                    color: root.isRunning ? theme.successColor : theme.textSecondary
+                    radius: theme.radiusXs
+                    opacity: root.isRunning ? 1 : 0.5
 
                     Text {
+                        id: statusText
                         anchors.centerIn: parent
-                        text: "Reset"
-                        color: "#ffffff"
-                    }
-
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: root.resetRequested()
+                        text: root.isRunning ? "Running" : "Paused"
+                        color: theme.textColor
+                        font.pixelSize: theme.fontSizeXs
+                        font.weight: theme.fontWeightMedium
                     }
                 }
             }
         }
-    }
-
-    Component.onCompleted: {
-        console.log("TimerCompact initialized");
     }
 
     function formatTime(seconds) {

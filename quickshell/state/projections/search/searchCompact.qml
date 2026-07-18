@@ -1,12 +1,15 @@
-// searchCompact.qml - Search compact projection
+// searchCompact.qml - Search compact projection for iOS Dynamic Island
 import QtQuick
+import "stores"
 
 Item {
     id: root
     objectName: "searchCompact"
 
-    implicitWidth: 250
-    implicitHeight: 40
+    implicitWidth: 260
+    implicitHeight: 48
+    
+    property var theme: ThemeStore {}
 
     signal querySubmitted(string query)
 
@@ -14,31 +17,36 @@ Item {
     property string placeholderText: "Search..."
 
     Rectangle {
+        id: container
         anchors.fill: parent
-        color: "#333333"
-        radius: 4
+        color: theme.islandSurface
+        radius: theme.radiusFull
+        clip: true
 
         Row {
             anchors.centerIn: parent
-            spacing: 8
-            width: parent.width - 16
+            spacing: theme.spacingMd
+            width: parent.width - theme.spacingLg * 2
 
+            // Search Icon
             Text {
-                anchors.verticalCenter: parent.verticalCenter
                 text: "🔍"
-                color: "#aaaaaa"
+                font.pixelSize: theme.fontSizeMd
+                anchors.verticalCenter: parent.verticalCenter
             }
 
+            // Search Input
             TextInput {
                 id: searchInput
                 anchors.verticalCenter: parent.verticalCenter
-                width: parent.parent.width - 24
-                color: "#ffffff"
-                font.pixelSize: 14
+                width: parent.parent.width - 32
+                color: theme.textColor
+                font.pixelSize: theme.fontSizeSm
+                font.weight: theme.fontWeightMedium
 
                 text: root.query
                 placeholderText: root.placeholderText
-                placeholderTextColor: "#666666"
+                placeholderTextColor: theme.textSecondary
 
                 onAccepted: {
                     root.query = text;
@@ -51,12 +59,32 @@ Item {
                         root.querySubmitted(text);
                     }
                 }
+
+                // Cursor color
+                selectedTextColor: theme.infoColor
+            }
+        }
+
+        // Focus indicator
+        Rectangle {
+            anchors.bottom: parent.bottom
+            width: parent.width
+            height: 1
+            color: theme.infoColor
+            opacity: searchInput.activeFocus ? 1 : 0
+
+            Behavior on opacity {
+                NumberAnimation {
+                    duration: theme.durationFast
+                }
             }
         }
     }
 
-    Component.onCompleted: {
-        console.log("searchCompact initialized");
+    Behavior on color {
+        ColorAnimation {
+            duration: theme.durationFast
+            easing.type: Easing.OutQuad
+        }
     }
-
 }
