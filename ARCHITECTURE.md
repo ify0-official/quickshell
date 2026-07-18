@@ -1,7 +1,7 @@
 # Quickshell Architecture
 
 > **Version:** 1.0.0 | **Last Updated:** 2025-07-18  
-> See also: [README.md](README.md) | [CONVENTION.md](CONVENTION.md) | [MEMORY.md](MEMORY.md) | [STATECHART.md](state/STATECHART.md)
+> See also: [[README]] | [[CONVENTION]] | [[ai/MEMORY]] | [[state/STATECHART]]
 
 ## Overview
 
@@ -127,7 +127,7 @@ Each state machine (`MinimalState.qml`, `CompactState.qml`, `ExpandedState.qml`)
 - **Current content selection** - `currentContent` property indicating which domain is active
 - **Transition guards** - Conditions that must be met for state changes
 
-See [STATECHART.md](state/STATECHART.md) for detailed state transition diagrams.
+See [[state/STATECHART]] for detailed state transition diagrams.
 
 ### 2. Content-Projections Separation
 
@@ -230,7 +230,7 @@ Transitions are guarded by conditions:
 - **System state**: Low battery may restrict transitions
 - **User preference**: Settings can disable certain transitions
 
-See [STATECHART.md](state/STATECHART.md) for complete transition matrix.
+See [[state/STATECHART]] for complete transition matrix.
 
 ---
 
@@ -434,7 +434,7 @@ graph LR
 
 ## Conventions Reference
 
-All code follows strict conventions defined in [CONVENTION.md](CONVENTION.md):
+All code follows strict conventions defined in [[CONVENTION]]:
 
 - **File naming**: PascalCase for components, singular nouns
 - **Component structure**: 9-section ordering (metadata → functions)
@@ -463,11 +463,11 @@ All code follows strict conventions defined in [CONVENTION.md](CONVENTION.md):
 
 ## Related Documentation
 
-- **[README.md](README.md)**: Project overview and quick start
-- **[CONVENTION.md](CONVENTION.md)**: Coding standards and best practices
-- **[MEMORY.md](MEMORY.md)**: Long-term project knowledge and decisions
-- **[STATECHART.md](state/STATECHART.md)**: Detailed HSM documentation
-- **[CONTEXT.md](CONTEXT.md)**: Current session context
+- [[README]]: Project overview and quick start
+- **[[CONVENTION]]**: Coding standards and best practices
+- [[ai/MEMORY]]: Long-term project knowledge and decisions
+- **[[state/STATECHART]]**: Detailed HSM documentation
+- [[ai/CONTEXT]]: Current session context
 
 ---
 
@@ -480,7 +480,7 @@ All code follows strict conventions defined in [CONVENTION.md](CONVENTION.md):
 | [`StateRegistry.qml`](quickshell/state/StateRegistry.qml) | Central state access |
 | [`ThemeStore.qml`](quickshell/state/stores/ThemeStore.qml) | Theme tokens |
 | [`PowerManager.qml`](quickshell/services/system/PowerManager.qml) | System power service |
-| [`STATECHART.md`](state/STATECHART.md) | State machine documentation |
+| [[state/STATECHART]] | State machine documentation |
 
 ### Common Patterns
 - Root element `id: root` in all components

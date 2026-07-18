@@ -172,8 +172,8 @@ Component.onCompleted: {
 
 ## Related Documentation
 
-- [../../ARCHITECTURE.md](../../ARCHITECTURE.md) - System architecture
-- [../README.md](../README.md) - State layer overview
-- [../STATECHART.md](../STATECHART.md) - How stores affect state transitions
-- [../../MEMORY.md](../../MEMORY.md) - Store implementation patterns
-- [../../CONVENTION.md](../../CONVENTION.md) - Coding standards
+- [[ARCHITECTURE]] - System architecture
+- [[quickshell/README]] - State layer overview
+- [[STATECHART]] - How stores affect state transitions
+- [[ai/MEMORY]] - Store implementation patterns
+- [[CONVENTION]] - Coding standards

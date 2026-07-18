@@ -9,16 +9,16 @@ This directory contains comprehensive suggestions for improving the Quickshell p
 
 | File | Purpose |
 |------|---------|
-| [README.md](README.md) | This file - entry point and overview |
-| [SUGGESTIONS.md](SUGGESTIONS.md) | Probable improvements across Architecture, Content, Files, Organization, Documentation |
-| [SOLUTIONS.md](SOLUTIONS.md) | Proposed solutions to implement the suggestions |
-| [PROBLEMS.md](PROBLEMS.md) | Potential drawbacks, problems, and risk analysis with impact ranking |
+| [[README]] | This file - entry point and overview |
+| [[SUGGESTIONS]] | Probable improvements across Architecture, Content, Files, Organization, Documentation |
+| [[SOLUTIONS]] | Proposed solutions to implement the suggestions |
+| [[PROBLEMS]] | Potential drawbacks, problems, and risk analysis with impact ranking |
 
 ## How to Use
 
-1. Start with [SUGGESTIONS.md](SUGGESTIONS.md) to understand potential improvements
-2. Review [SOLUTIONS.md](SOLUTIONS.md) for implementation approaches
-3. Carefully read [PROBLEMS.md](PROBLEMS.md) to understand risks and trade-offs
+1. Start with [[SUGGESTIONS]] to understand potential improvements
+2. Review [[SOLUTIONS]] for implementation approaches
+3. Carefully read [[PROBLEMS]] to understand risks and trade-offs
 4. Prioritize based on your project goals and constraints
 
 ## Quick Summary

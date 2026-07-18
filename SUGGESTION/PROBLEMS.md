@@ -1,7 +1,7 @@
 # PROBLEMS.md
 
 > **Potential Drawbacks, Problems, and Risk Analysis**  
-> For suggestions in [SUGGESTIONS.md](SUGGESTIONS.md) with solutions from [SOLUTIONS.md](SOLUTIONS.md)
+> For suggestions in [[SUGGESTIONS]] with solutions from [[SOLUTIONS]]
 
 ---
 

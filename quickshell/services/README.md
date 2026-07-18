@@ -107,6 +107,6 @@ Services should be testable in isolation:
 
 ## Related Documentation
 
-- [../ARCHITECTURE.md](../ARCHITECTURE.md) - System architecture overview
-- [../state/STATECHART.md](../state/STATECHART.md) - How services trigger state transitions
-- [../MEMORY.md](../MEMORY.md) - Service implementation patterns
+- [[ARCHITECTURE]] - System architecture overview
+- [[state/STATECHART]] - How services trigger state transitions
+- [[ai/MEMORY]] - Service implementation patterns

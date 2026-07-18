@@ -221,9 +221,9 @@ All projections follow these design principles:
 
 ## Related Documentation
 
-- [../../ARCHITECTURE.md](../../ARCHITECTURE.md) - System architecture
-- [../README.md](../README.md) - State layer overview
-- [../STATECHART.md](../STATECHART.md) - Content-projection separation
+- [[ARCHITECTURE]] - System architecture
+- [[quickshell/README]] - State layer overview
+- [[STATECHART]] - Content-projection separation
 - [../stores/ThemeStore.qml](../stores/ThemeStore.qml) - Design tokens
-- [../../MEMORY.md](../../MEMORY.md) - Projection implementation patterns
-- [../../CONVENTION.md](../../CONVENTION.md) - Coding standards
+- [[ai/MEMORY]] - Projection implementation patterns
+- [[CONVENTION]] - Coding standards

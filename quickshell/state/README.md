@@ -186,7 +186,7 @@ Item {
 | Expanded | Compact | Dismiss action | Normal |
 | Expanded | Minimal | System sleep | High |
 
-See [STATECHART.md](STATECHART.md) for complete transition matrix.
+See [[STATECHART]] for complete transition matrix.
 
 ## Testing Considerations
 
@@ -197,8 +197,8 @@ See [STATECHART.md](STATECHART.md) for complete transition matrix.
 
 ## Related Documentation
 
-- [../ARCHITECTURE.md](../ARCHITECTURE.md) - System architecture overview
-- [STATECHART.md](STATECHART.md) - Detailed HSM documentation
-- [../MEMORY.md](../MEMORY.md) - Long-term project knowledge
-- [../CONTEXT.md](../CONTEXT.md) - Current session context
-- [../CONVENTION.md](../CONVENTION.md) - Coding standards
+- [[ARCHITECTURE]] - System architecture overview
+- [[STATECHART]] - Detailed HSM documentation
+- [[ai/MEMORY]] - Long-term project knowledge
+- [[ai/CONTEXT]] - Current session context
+- [[CONVENTION]] - Coding standards

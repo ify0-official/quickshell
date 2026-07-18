@@ -1,28 +1,46 @@
-# Project-specific ignores
+```
+# Compiled and build artifacts
+*.pyc
+__pycache__/
+*.o
+*.obj
+dist/
+build/
+target/
+
+# Dependencies
+.venv/
+venv/
+node_modules/
+.mypy_cache/
+.pytest_cache/
+.gradle/
+
+# Logs and temp files
 *.log
 *.tmp
 *.swp
 *.swo
-*.env
-*.env.local
+
+# Environment
 .env
-.env.
+.env.local
+.env.*
+
+# Editors
+.vscode/
+.idea/
+
+# System files
 .DS_Store
 Thumbs.db
-__pycache__/
-.pytest_cache/
-.mypy_cache/
-node_modules/
-.julia/
-zig*/
-target/
-.gradle/
-.cargo/
-build/
-dist/
+
+# Coverage
 coverage/
 htmlcov/
-*.coverage
+.coverage
+
+# Compressed files
 *.zip
 *.gz
 *.tar
@@ -45,22 +63,4 @@ htmlcov/
 *.tar.bz2
 *.tar.xz
 *.tar.zst
-.vscode/
-.idea/
-*.pyc
-*.class
-*.o
-*.exe
-*.dll
-*.so
-*.a
-*.obj
-*.out
-*.log
-*.tmp
-*.swp
-*.swo
-*.env
-*.env.local
-.env
-.env.
+```

@@ -1,7 +1,7 @@
 # STATECHART.md
 
 > **Hierarchical State Machine Documentation**  
-> See also: [ARCHITECTURE.md](../ARCHITECTURE.md) | [MEMORY.md](../MEMORY.md)
+> See also: [[ARCHITECTURE]] | [[ai/MEMORY]]
 
 ## Overview
 
@@ -421,5 +421,5 @@ console.log("Active Content:", stateRegistry.activeContent);
 | [`ExpandedState.qml`](../quickshell/state/machines/ExpandedState.qml) | Expanded state machine |
 | [`ThemeStore.qml`](../quickshell/state/stores/ThemeStore.qml) | Theme tokens |
 | [`SessionStore.qml`](../quickshell/state/stores/SessionStore.qml) | Session state |
-| [ARCHITECTURE.md](../ARCHITECTURE.md) | System architecture |
+| [[ARCHITECTURE]] | System architecture |
 
