@@ -1,1 +1,29 @@
-Nothing should be ignored since the changes only include documentation files (.md) which are source/config files.
+```qml
+// QML cache and compiled files
+*.qmlc
+qmldir.cache
+
+// Build artifacts (if any Qt build system is used)
+build/
+dist/
+*.so
+*.dylib
+*.dll
+
+// IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+// Logs
+*.log
+
+// Temporary files
+*.tmp
+
+// Environment files
+.env
+.env.local
+*.env.*
+```
