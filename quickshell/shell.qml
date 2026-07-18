@@ -33,8 +33,7 @@ Item {
         flags: Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint | Qt.Tool
         
         // Position at top center of screen
-        x: (Screen.width - width) / 2
-        y: 10
+        position: Qt.point((Screen.width - width) / 2, 10)
         
         // Dynamic size based on state
         width: currentStateWidth
