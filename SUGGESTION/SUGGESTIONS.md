@@ -226,6 +226,72 @@ quickshell/
 
 ---
 
+## 6. Design Patterns
+
+### 6.1 Current GoF Patterns in Use
+
+**Already Implemented:**
+
+1. **Singleton Pattern**
+   - **Location:** `SessionStore.qml` (pragma Singleton), `ThemeStore`, `PowerManager`, `BackendSocket`
+   - **Purpose:** Ensures only one instance of session state exists across the application
+
+2. **State Pattern**
+   - **Location:** `state/machines/` (MinimalState, CompactState, ExpandedState) + `StateRegistry.qml`
+   - **Purpose:** Allows the UI to change behavior when internal state changes
+
+3. **Facade Pattern**
+   - **Location:** `StateRegistry.qml`
+   - **Purpose:** Provides a simplified interface to the complex state machine subsystem
+
+4. **Strategy Pattern**
+   - **Location:** `state/projections/` (e.g., BatteryMinimal.qml, BatteryCompact.qml, BatteryExpanded.qml)
+   - **Purpose:** Different projection variants are interchangeable strategies for displaying the same content
+
+5. **Observer Pattern**
+   - **Location:** Throughout QML files using signals/slots
+   - **Examples:** `StateRegistry` signals, `PowerManager` signals, QML property binding
+
+6. **Template Method Pattern**
+   - **Location:** State machines (MinimalState, CompactState, ExpandedState)
+   - **Purpose:** Defines skeleton of state behavior with `enter()` and `exit()` methods
+
+### 6.2 Recommended GoF Patterns to Implement
+
+**Suggested Additions:**
+
+1. **Factory Pattern**
+   - **Problem:** Currently, `shell.qml` manually creates all projection instances
+   - **Solution:** Centralize object creation in a dedicated factory component
+   - **Benefit:** Easier to manage projection lifecycle, enables lazy loading and caching
+   - **Implementation:** Create `ProjectionFactory.qml` to handle dynamic projection instantiation
+
+2. **Command Pattern**
+   - **Problem:** State transitions are direct function calls without encapsulation
+   - **Solution:** Encapsulate state transitions as command objects
+   - **Benefit:** Enables undo/redo, command queuing, and transactional state changes
+   - **Implementation:** Create command objects for each state transition type
+
+3. **Mediator Pattern** (Enhancement)
+   - **Problem:** `StateRegistry` acts as mediator but could be more explicit
+   - **Solution:** Formalize the mediator role with clear interfaces
+   - **Benefit:** Reduces coupling between components, centralizes interaction logic
+   - **Implementation:** Define explicit mediator interface in `StateRegistry`
+
+4. **Flyweight Pattern**
+   - **Problem:** Multiple projection instances share common theme data redundantly
+   - **Solution:** Share intrinsic state (theme, animations) across projections
+   - **Benefit:** Reduced memory footprint, consistent styling
+   - **Implementation:** Extract shared state into `AnimationStore` and `ThemeStore`
+
+5. **Chain of Responsibility Pattern**
+   - **Problem:** Priority event handling lacks flexible processing chain
+   - **Solution:** Create a chain of handlers for processing events by priority
+   - **Benefit:** Flexible event processing, easy to add/remove handlers
+   - **Implementation:** Create event handler chain in content priority management
+
+---
+
 ## Summary Matrix
 
 | Category | Count | Priority | Effort |
@@ -235,8 +301,9 @@ quickshell/
 | Files | 15+ | High | Low |
 | Organization | 10+ | Medium | Medium |
 | Documentation | 20+ | High | Low |
+| Design Patterns | 5+ | Medium | Medium |
 
-**Total Suggestions:** 85+
+**Total Suggestions:** 90+
 
 ---
 

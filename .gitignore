@@ -1,18 +1,8 @@
 ```
-# Compiled and build artifacts
-*.pyc
-__pycache__/
-*.qmlc
-*.jsc
-
-# Dependencies
-node_modules/
-vendor/
-
 # Logs and temp files
 *.log
 *.tmp
-*.temp
+*.swp
 
 # Environment
 .env
@@ -22,49 +12,73 @@ vendor/
 # Editors
 .vscode/
 .idea/
-*.swp
-*.swo
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+ENV/
+.venv/
+env.bak/
+venv.bak/
 
 # Build and distribution
-build/
 dist/
-target/
-*.out
-*.exe
-*.dll
-*.so
-*.a
-
-# Coverage
-coverage/
-htmlcov/
+build/
+*.egg-info/
+.eggs/
 .coverage
+htmlcov/
+coverage.xml
+.tox/
+.nox/
+.pytest_cache/
+.mypy_cache/
+.hypothesis/
 
-# OS specific
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+Thumbs.db:encryptable
+desktop.ini
+*.nib
+*~
+*.bak
+*.swp
+*.swo
+*~
 
-# Compression
-*.zip
-*.gz
-*.tar
-*.tgz
-*.bz2
-*.xz
-*.7z
-*.rar
-*.zst
-*.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
-*.lz
-*.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class
+*$pyc.class
+*.so
+.Python
+.pytest_cache/
+.coverage*
+htmlcov/
+.coveragerc
+.python-version
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.noserc
+.pydevproject
+.vscode/
+.idea/
+
+# Original rules preserved
+*.log
 ```
