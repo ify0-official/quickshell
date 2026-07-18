@@ -127,10 +127,10 @@ quickshell/
 | [README.md](README.md) | This file - quick start and overview |
 | [ARCHITECTURE.md](ARCHITECTURE.md) | Detailed system architecture and patterns |
 | [CONVENTION.md](CONVENTION.md) | Coding standards and best practices |
-| [MEMORY.md](MEMORY.md) | Long-term project knowledge |
+| [ai/MEMORY.md](ai/MEMORY.md) | Long-term project knowledge |
 | [STATECHART.md](state/STATECHART.md) | Hierarchical State Machine documentation |
-| [CONTEXT.md](CONTEXT.md) | Current session context |
-| [INSTRUCTION.md](INSTRUCTION.md) | Development guidelines |
+| [ai/CONTEXT.md](ai/CONTEXT.md) | Current session context |
+| [ai/INSTRUCTION.md](ai/INSTRUCTION.md) | Development guidelines |
 
 ---
 
@@ -290,8 +290,8 @@ export QML_DEBUGGER_ENABLED=1
 ## Contributing
 
 1. Review [CONVENTION.md](CONVENTION.md) for coding standards
-2. Check [MEMORY.md](MEMORY.md) for architectural decisions
-3. Update [CONTEXT.md](CONTEXT.md) with session progress
+2. Check [ai/MEMORY.md](ai/MEMORY.md) for architectural decisions
+3. Update [ai/CONTEXT.md](ai/CONTEXT.md) with session progress
 4. Add tests for new features (90% coverage target)
 
 ---
@@ -299,6 +299,18 @@ export QML_DEBUGGER_ENABLED=1
 ## License
 
 [Add your license here]
+
+---
+
+## AI Developer Note
+
+> **⚠️ IMPORTANT FOR AI DEVELOPERS:**  
+> Before making any changes to this project, you MUST:
+> 1. Check the `ai/` directory for context and instructions
+> 2. Read and follow `ai/INSTRUCTION.md` explicitly
+> 3. Update both `ai/CONTEXT.md` and `ai/MEMORY.md` if ANY changes are made to the codebase
+> 
+> These files contain critical session context, project memory, and development guidelines that ensure continuity across AI sessions.
 
 ---
 
