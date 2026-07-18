@@ -1,42 +1,93 @@
-// meetingMinimal.qml - Meeting minimal projection
+// meetingMinimal.qml - Meeting minimal projection for Dynamic Island
 import QtQuick
+import "stores"
 
 Item {
     id: root
     objectName: "meetingMinimal"
 
-    implicitWidth: 60
-    implicitHeight: 20
+    implicitWidth: 72
+    implicitHeight: 36
+    
+    property var theme: ThemeStore {}
+    
     property bool isCameraOn: false
     property bool isMicOn: false
 
     Rectangle {
+        id: container
         anchors.fill: parent
-        color: "#333333"
-        radius: 4
-
+        color: theme.islandSurface
+        radius: theme.radiusFull
+        
         Row {
             anchors.centerIn: parent
-            spacing: 8
-
+            spacing: theme.spacingMd
+            
             Rectangle {
-                width: 8
-                height: 8
-                color: root.isCameraOn ? "#4caf50" : "#f44336"
-                radius: 4
+                id: cameraIndicator
+                width: 10
+                height: 10
+                color: root.isCameraOn ? theme.successColor : theme.errorColor
+                radius: theme.radiusFull
+                
+                Behavior on color {
+                    ColorAnimation {
+                        duration: theme.durationFast
+                    }
+                }
+                
+                Text {
+                    anchors.centerIn: parent
+                    text: "📷"
+                    font.pixelSize: theme.fontSizeXs
+                    
+                    visible: !root.isCameraOn
+                }
             }
-
+            
             Rectangle {
-                width: 8
-                height: 8
-                color: root.isMicOn ? "#4caf50" : "#f44336"
-                radius: 4
+                id: micIndicator
+                width: 10
+                height: 10
+                color: root.isMicOn ? theme.successColor : theme.errorColor
+                radius: theme.radiusFull
+                
+                Behavior on color {
+                    ColorAnimation {
+                        duration: theme.durationFast
+                    }
+                }
+                
+                Text {
+                    anchors.centerIn: parent
+                    text: "🎤"
+                    font.pixelSize: theme.fontSizeXs
+                    
+                    visible: !root.isMicOn
+                }
             }
         }
+        
+        states: [
+            State {
+                name: "cameraOff"
+                when: !root.isCameraOn
+                
+                PropertyChanges {
+                    target: cameraIndicator
+                    opacity: theme.opacityMuted
+                }
+            },
+            State {
+                name: "micOff"
+                when: !root.isMicOn
+                
+                PropertyChanges {
+                    target: micIndicator
+                    opacity: theme.opacityMuted
+                }
+            }
+        ]
     }
-
-    Component.onCompleted: {
-        console.log("meetingMinimal initialized");
-    }
-
 }
